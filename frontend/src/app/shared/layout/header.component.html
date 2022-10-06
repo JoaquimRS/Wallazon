@@ -5,15 +5,15 @@
             <h1>wallazon</h1>
         </div>
         <div class="search">
-            <mat-icon class="search-icon">search</mat-icon>
+            <fa-icon icon="search" class="search-icon"></fa-icon>
             <input type="text" class="search-input">
         </div>
         <nav>
             <ul class="nav-list">
-                <li class="nav-list-item"><mat-icon>favorite_border</mat-icon></li>
-                <li class="nav-list-item"><mat-icon>sms</mat-icon></li>
-                <li class="nav-list-item"><mat-icon>person</mat-icon></li>
-                <li class="nav-list-item"><mat-icon>add_circle</mat-icon></li>
+                <li class="nav-list-item"><fa-icon [icon]="['far', 'heart']"></fa-icon></li>
+                <li class="nav-list-item"><fa-icon [icon]="['fas','comment-dots']"></fa-icon></li>
+                <li class="nav-list-item"><fa-icon [icon]="['fas','circle-plus']"></fa-icon></li>
+                <li class="nav-list-item"><fa-icon [icon]="['fas','user']"></fa-icon></li>
             </ul>
         </nav>
     </div>
