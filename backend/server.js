@@ -23,6 +23,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Wallazon app, made with Express - Mongo - Angular" });
 });
 
-app.listen(port,hostname, () => {
-  console.log(`http://${hostname}:${port}`);
+app.listen(port,hostname, () => { 
+  console.log(`http://ximo.com:${port}`);
 });
