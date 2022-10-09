@@ -3,24 +3,15 @@
         <section class="categories">
             <h1>¿Que categoría estas buscando?</h1>
             <div class="carrousel">
-                <div class="container">
-                    <fa-icon [icon]="['fas','mobile']"></fa-icon>
-                    <p>Móviles y Telefonia</p>
-                </div>
-                <div class="container">
-                    <fa-icon [icon]="['fas','shirt']"></fa-icon>
-                    <p>Moda y Accesorios</p>
-                </div>
-                <div class="container">
-                    <img src="" alt="">
-                    <p></p>
+                <div *ngFor="let category of categories" class="container">
+                    <fa-icon [icon]="[category.image.prefix,category.image.name]"></fa-icon>
+                    <p>{{category.title}}</p>
                 </div>
             </div>
         </section>
 
         <section class="related">
-            <h1>Quizá te gusten</h1>
+            <!-- <h1>{{msg}}</h1> -->
         </section>
-
     </article>
 </main>

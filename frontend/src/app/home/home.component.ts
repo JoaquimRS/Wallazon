@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+import { CategoriesService } from '../core';
+import { Category } from '../core';
 
 
 @Component({
@@ -8,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  categories: Category[] = []
 
+  constructor(
+    // private activateRoute: ActivatedRoute,
+    private categoriService: CategoriesService
+  ) { 
+    this.categoriService.allCategories()
+      .subscribe((categories)=>{
+        this.categories = categories
+      })
+    
+  }
+  
   ngOnInit(): void {
+    
+    // this.activateRoute.data.subscribe((data) =>{
+    //   this.msg = data
+    // }) 
   }
 
 }

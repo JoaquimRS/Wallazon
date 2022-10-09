@@ -18,7 +18,8 @@ const CategorySchema = mongoose.Schema({
     maxLength: 300,
   },
   image: {
-    type: String
+    prefix: {type: String},
+    name: {type: String}
   },
   subcategories: {
     type: [String]

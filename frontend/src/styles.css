@@ -99,3 +99,19 @@ header nav li {
     cursor: pointer;
 }
 
+footer {
+    display: flex;
+    align-items: center;
+    background-color: #EF7757;
+    flex-direction: column;
+}
+footer div {
+    margin: 3px;
+}
+footer p {
+    margin: 0;
+}
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
