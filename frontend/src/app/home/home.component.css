@@ -11,45 +11,20 @@ article {
     
 }
 
+h1 {
+    font-size: 1.5em;
+}
 section {
     width: 100%;
     text-align: center;
 }
-
-.app-carousel {
+.carousel {
+    width: 100%;
+}
+.products {
     width: 100%;
 }
 
-.carrousel {
-    display: flex;
-    
-}
-
-.carrousel .container {
-    color: #443C6B;
-    border: 6px solid #443C6B;
-    background-color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 20px;
-    width: 120px;
-    height: 120px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-}
 
 
-.carrousel .container:hover {
-    transform: scale(1.2);
-}
-.carrousel .container fa-icon {
-    font-size: 60px;
-    margin: 0;
-}
-.carrousel .container p {
-    margin: 0;
-}
 

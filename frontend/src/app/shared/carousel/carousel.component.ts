@@ -5,7 +5,7 @@ import { Category } from "src/app/core";
 
 
 @Component({
-  selector: 'app-carousel',
+  selector: 'carousel',
   templateUrl: './carousel.component.html',
   styleUrls: [
     './carousel.component.css'
@@ -21,7 +21,7 @@ export class CarouselComponent{
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
       slides: {
-        perView: 7,
+        perView: 6,
       },
     })
   }

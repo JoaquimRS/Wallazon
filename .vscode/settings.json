@@ -1,0 +1,5 @@
+{
+    "exportall.config.relExclusion": [
+        "/frontend/src/app/shared"
+    ]
+}

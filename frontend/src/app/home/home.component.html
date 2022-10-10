@@ -1,11 +1,13 @@
 <main>
     <article>
         <section class="categories">
-            <h1>¿Que categoría estas buscando?</h1>
-            <app-carousel class="app-carousel" [categories]="categories"></app-carousel>
+            <h1>¿Qué categoría estás buscando?</h1>
+            <carousel class="carousel" [categories]="categories"></carousel>
         </section>
         
-        <section class="related">
+        <section class="products">
+            <h1>Quizá te gusten</h1>
+            <product-list [products]="products"></product-list>
         </section>
     </article>
 </main>
