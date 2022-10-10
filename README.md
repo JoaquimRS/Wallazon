@@ -1,2 +1,2 @@
-# Wallazon
-Angular - Express - MongoDB
+Wallazon
+Angular - Express - Mongo
