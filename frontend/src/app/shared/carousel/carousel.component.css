@@ -1,28 +1,8 @@
-main {
-    margin: 20px auto;
-    width: 80%;
-}
-
-article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-section {
-    width: 100%;
-    text-align: center;
-}
-
-.app-carousel {
-    width: 100%;
-}
+@import "keen-slider/keen-slider.min.css";
 
 .carrousel {
     display: flex;
-    
+    text-align: center;    
 }
 
 .carrousel .container {
@@ -44,7 +24,9 @@ section {
 
 .carrousel .container:hover {
     transform: scale(1.2);
+    cursor: pointer;
 }
+
 .carrousel .container fa-icon {
     font-size: 60px;
     margin: 0;
@@ -52,4 +34,3 @@ section {
 .carrousel .container p {
     margin: 0;
 }
-

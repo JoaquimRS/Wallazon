@@ -25,6 +25,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "angular-material-icons": "^0.7.1",
+    "keen-slider": "^6.8.2",
     "material-icons": "^1.12.0",
     "rxjs": "~7.5.0",
     "swiper": "^8.4.3",

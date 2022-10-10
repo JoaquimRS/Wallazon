@@ -2,16 +2,10 @@
     <article>
         <section class="categories">
             <h1>¿Que categoría estas buscando?</h1>
-            <div class="carrousel">
-                <div *ngFor="let category of categories" class="container">
-                    <fa-icon [icon]="[category.image.prefix,category.image.name]"></fa-icon>
-                    <p>{{category.title}}</p>
-                </div>
-            </div>
+            <app-carousel class="app-carousel" [categories]="categories"></app-carousel>
         </section>
-
+        
         <section class="related">
-            <!-- <h1>{{msg}}</h1> -->
         </section>
     </article>
 </main>

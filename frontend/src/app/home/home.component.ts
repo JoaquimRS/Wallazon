@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
-import { CategoriesService } from '../core';
-import { Category } from '../core';
+import { CategoriesService, Category } from '../core';
 
 
 @Component({
@@ -14,7 +12,7 @@ export class HomeComponent implements OnInit {
   categories: Category[] = []
 
   constructor(
-    // private activateRoute: ActivatedRoute,
+
     private categoriService: CategoriesService
   ) { 
     this.categoriService.allCategories()
@@ -25,10 +23,6 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    
-    // this.activateRoute.data.subscribe((data) =>{
-    //   this.msg = data
-    // }) 
   }
 
 }
