@@ -1,8 +1,16 @@
 const { Product } = require("../../models/index")
 
-exports.findAll = async () => {
+  exports.findAll = async () => {
     try {
       const data = await Product.find();
+      return data;
+    } catch (err) {
+      return err;
+    }
+  };
+  exports.findSkiped = async (skip) => {
+    try {
+      const data = await Product.find().skip(skip*4).limit(4);
       return data;
     } catch (err) {
       return err;

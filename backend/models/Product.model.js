@@ -57,12 +57,17 @@ ProductSchema.pre("validate", function (next) {
   if (!this.slug) {
     this.slugify();
   }
+  
   next();
 });
 
 ProductSchema.methods.slugify = function () {
   this.slug =
     slug(this.title) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36);
+  
+  for (let i = 0; i < this.images.length; i++) {
+    this.images[i] = this.slug + this.images[i] 
+  }
 };
 
 module.exports = mongoose.model("Product", ProductSchema);

@@ -18,4 +18,8 @@ export class ProductsService {
   allProducts(): Observable<Product[]> {
     return this.apiService.get('/products')
   }
+
+  skipedProducts(skip:Number): Observable<Product[]>{
+    return this.apiService.get('/products/skip/'+skip)
+  }
 }

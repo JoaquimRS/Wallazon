@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService, Category, ProductsService, Product } from '../core';
+import { 
+  CategoriesService, 
+  Category, 
+  ProductsService, 
+  Product 
+} from '../core';
 
 
 @Component({
@@ -11,28 +16,31 @@ export class HomeComponent implements OnInit {
 
   categories: Category[] = []
   products: Product[] = []
+  skip: Number = 0
+  scroll: boolean = false
 
   constructor(
-
     private categoryService: CategoriesService,
     private productService : ProductsService
-  ) { 
-    
-    
-  }
+  ) {}
   
   ngOnInit(): void {
     this.categoryService.allCategories()
       .subscribe((categories)=>{
         this.categories = categories
       })
-    this.productService.allProducts()
-      .subscribe((products)=>{
-        console.log(products);
-        this.products = products
-        console.log(this.products);
-        
+    this.productService.skipedProducts(this.skip)
+      .subscribe((products)=>{        
+        products.length > 0 ? (this.products = products, this.skip = +this.skip + 1) : this.scroll = true
       })
   }
+
+  onScroll() {    
+    this.productService.skipedProducts(this.skip)
+      .subscribe((products) =>{
+        products.length > 0 ? (this.products.push(...products), this.skip = +this.skip + 1) : this.scroll = true
+      })
+  }
+
 
 }

@@ -21,10 +21,15 @@ section {
 .carousel {
     width: 100%;
 }
+
 .products {
+    margin-top: 20px;
     width: 100%;
 }
 
+.products h1 {
+    margin-bottom: 40px;
+}
 
 
 
