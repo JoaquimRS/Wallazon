@@ -9,5 +9,6 @@ import { Product } from 'src/app/core';
 })
 export class ProductListComponent {
   @Input() products! : Product[]
+  page!: number 
 
 }

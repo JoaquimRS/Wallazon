@@ -1,0 +1,22 @@
+main {
+    margin: 20px auto;
+    width: 75%;
+    display: flex;
+}
+
+aside {
+    width: 20%;    
+}
+.filters {
+    top: 10px;
+    position: sticky;
+}
+
+article {
+    width: 80%;
+    text-align: center;
+    
+}
+
+
+

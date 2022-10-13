@@ -1,0 +1,24 @@
+<div class="filters">
+    <div class="filter">
+        <input type="checkbox" class="show-drop-down" id="categories">
+        <label for="categories">Category</label>
+        <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
+        <div class="drop-down-filter">
+            <select name="categoy" id="category">
+                <option *ngFor="let category of categories" [value]="category.slug">{{category.title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="filter">
+        <input type="checkbox" class="show-drop-down" id="show-drop-down-condition">
+        <label for="show-drop-down-condition">Condición</label>
+        <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
+        <div class="drop-down-filter">
+            <label for="nuevo"><input type="checkbox" id="nuevo">Nuevo</label><br>
+            <label for="seminuevo"><input type="checkbox" id="seminuevo">Seminuevo</label><br>
+            <label for="bueno"><input type="checkbox" id="bueno">Bueno</label><br>
+            <label for="aceptable"><input type="checkbox" id="aceptable">Aceptable</label><br>
+        </div>
+    </div>
+    
+</div>

@@ -20,25 +20,25 @@ export class HomeComponent implements OnInit {
   scroll: boolean = false
 
   constructor(
-    private categoryService: CategoriesService,
-    private productService : ProductsService
+    private _categoryService: CategoriesService,
+    private _productService : ProductsService
   ) {}
   
   ngOnInit(): void {
-    this.categoryService.allCategories()
+    this._categoryService.allCategories()
       .subscribe((categories)=>{
         this.categories = categories
       })
-    this.productService.skipedProducts(this.skip)
+    this._productService.skipedProducts(this.skip)
       .subscribe((products)=>{        
         products.length > 0 ? (this.products = products, this.skip = +this.skip + 1) : this.scroll = true
       })
   }
 
   onScroll() {    
-    this.productService.skipedProducts(this.skip)
+    this._productService.skipedProducts(this.skip)
       .subscribe((products) =>{
-        products.length > 0 ? (this.products.push(...products), this.skip = +this.skip + 1) : this.scroll = true
+        products.length > 0 && this.skip < 5 ? (this.products.push(...products), this.skip = +this.skip + 1) : this.scroll = true
       })
   }
 

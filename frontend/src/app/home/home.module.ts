@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
 
 import { HomeComponent } from './home.component';
@@ -12,6 +11,7 @@ import { SharedModule } from '../shared';
 
 
 @NgModule({
+  declarations: [HomeComponent],
   imports: [
     HomeRoutingModule,
     FontAwesomeModule,
@@ -20,10 +20,7 @@ import { SharedModule } from '../shared';
     InfiniteScrollModule
 
   ],
-  declarations: [
-    HomeComponent
-  ],
 })
 export class HomeModule { }
 
-platformBrowserDynamic().bootstrapModule(HomeModule);
+// platformBrowserDynamic().bootstrapModule(HomeModule);

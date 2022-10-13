@@ -28,6 +28,8 @@
     "keen-slider": "^6.8.2",
     "material-icons": "^1.12.0",
     "ngx-infinite-scroll": "^14.0.0",
+    "ngx-pagination": "^6.0.2",
+    "ngx-quicklink": "^0.3.0",
     "rxjs": "~7.5.0",
     "swiper": "^8.4.3",
     "tslib": "^2.3.0",

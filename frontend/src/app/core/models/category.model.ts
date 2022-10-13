@@ -1,4 +1,5 @@
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
+import { Product } from "./product.model";
 
 export interface Category {
     slug?:string;
@@ -9,4 +10,5 @@ export interface Category {
         name: IconName;
     };
     subcategories:string[];
+    products: Product[];
 }

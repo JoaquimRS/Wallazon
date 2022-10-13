@@ -1,3 +1,4 @@
-<div class="products-scroll">
-    <product-item class="products" *ngFor="let product of products" [product]="product"></product-item>
+<div class="products-scroll">   
+    <product-item class="products" *ngFor="let product of products | paginate:{itemsPerPage:12,currentPage:page}" [product]="product" ></product-item>
 </div>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>

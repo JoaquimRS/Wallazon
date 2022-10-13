@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs';
 
 import { ApiService } from './api.service';
 import { Category } from '../models';
@@ -13,12 +11,13 @@ import { Category } from '../models';
 export class CategoriesService {
 
   constructor(
-    private apiService : ApiService,
-    // private http: HttpClient
+    private _apiService : ApiService,
   ) { }
 
   allCategories(): Observable<Category[]> {
-    return this.apiService.get('/categories')
-
+    return this._apiService.get('/categories')
+  }
+  getCategory(slug: any): Observable<Category> {
+    return this._apiService.get('/categories/'+slug)
   }
 }
