@@ -105,6 +105,11 @@ footer {
     background-color: #EF7757;
     flex-direction: column;
 }
+
+footer nav {
+    display: none;
+}
+
 footer div {
     margin: 3px;
 }
@@ -114,4 +119,82 @@ footer p {
 footer a {
     text-decoration: none;
     color: inherit;
+}
+
+@media (max-width: 600px)  {
+    body {
+        background-color: #EF7757;
+    }
+    header.nav {
+        top: 0;
+        padding: 0;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    }
+    .container {
+        box-sizing: border-box;
+        justify-content: space-between;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .search {
+        width: 80%;
+    }
+    .search-input {
+        width: 100%;
+    }
+/*     
+    .container:focus-within > .nav-title > img{
+        display: none;
+    }
+
+    .container:focus-within > .search {
+        width: 100%;
+    } */
+
+    .nav-title h1 {
+        display: none;
+    }
+    .nav-title {
+        height: 70px;
+    }
+
+    .nav-title img {
+        height: 100%;
+    }
+    header nav {
+        display: none;
+    }
+
+    footer main {
+        display: none;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    footer nav {
+        display: block;
+        width: 100%;
+        padding: 20px;
+    }
+    footer nav ul {
+        display: flex;
+        list-style-type: none;
+        justify-content: space-around;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-list-item {
+        transform: scale(1.5);
+    }
+    .focus {
+        color: #13c1ac;
+        transform: scale(2);
+    }
+
+
+    
 }

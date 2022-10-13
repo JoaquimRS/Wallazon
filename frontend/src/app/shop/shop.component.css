@@ -18,5 +18,14 @@ article {
     
 }
 
+@media (max-width: 600px)  {
+    main {
+        display: block;
+    }
+    aside, article {
+        width: 100%;
+    }
 
+    
+}
 
