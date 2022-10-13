@@ -1,4 +1,5 @@
-const { Product } = require("../../models/index")
+const { Product } = require("../../models/index");
+const { param } = require("../../routes");
 
   exports.findAll = async () => {
     try {
@@ -16,6 +17,15 @@ const { Product } = require("../../models/index")
       return err;
     }
   };
+
+  exports.findFilteredProducts = async (params) =>{
+    try {
+      const data = await Product.find().skip(params.offset*params.limit).limit(params.limit);
+      return data;
+    } catch (err) {
+      return err;
+    }
+  }
 
   exports.findOne = async (idProduct) => {
     try {

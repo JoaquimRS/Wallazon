@@ -1,5 +1,6 @@
 {
     "exportall.config.relExclusion": [
-        "/frontend/src/app/shared"
+        "/frontend/src/app/shared",
+        "/frontend/src/app/core/models"
     ]
 }

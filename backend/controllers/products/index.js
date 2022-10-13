@@ -10,6 +10,16 @@ exports.getProducts = async (req,res) => {
     res.json(products)
 } 
 
+exports.getFilteredProducts = async (req,res) => {
+    let products
+    try {
+        products = await productController.findFilteredProducts(req.query)
+    } catch (error) {
+        products = error
+    }
+    res.json(products)
+} 
+
 exports.getSkipedProducts = async (req,res) => {
     let products
     try {

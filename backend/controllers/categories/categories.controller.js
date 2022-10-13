@@ -11,7 +11,7 @@ exports.findAll = async () => {
 
   exports.findOne = async (idCategory) => {
     try {
-      const data = await Category.findOne({slug:idCategory});
+      const data = await Category.findOne({slug:idCategory}).populate("products")
       return data;
     } catch (err) {
       return err;
