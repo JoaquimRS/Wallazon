@@ -1,4 +1,4 @@
 export interface ProductFilters {
-    limit: Number,
-    offset: Number
+    limit: number,
+    offset: number
 }

@@ -3,7 +3,7 @@ import { HttpParams } from '@angular/common/http';
 import { Observable,map } from 'rxjs';
 
 import { ApiService } from './api.service';
-import { Product,ProductFilters } from '../models';
+import { Product, Products ,ProductFilters } from '../models';
 
 
 @Injectable({
@@ -23,7 +23,7 @@ export class ProductsService {
     return this._apiService.get('/products/skip/'+skip)
   }
 
-  filteredProducts(productFilters: any): Observable<Product[]>{    
+  filteredProducts(productFilters: any): Observable<Products>{
     return this._apiService.get('/products/filter',new HttpParams({fromObject: productFilters}))
   }
 }

@@ -7,6 +7,7 @@
     <article>
         <section>
             <product-list [products]="products"></product-list>
+            <pagination class="pagination" [numpages]="numpages" (page)="changePage($event)"></pagination>
         </section>
     </article>
 </main>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { 
   CategoriesService, 
@@ -15,12 +15,14 @@ import {
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  ppp: number = 12;
   products!: Product[]
-  // paginated_products!: Product[][]
   categories: Category[] = []
   slugCategory: string | null
-  // productFilters: ProductFilters = {limit: 12, offset: 0};
+  productFilters: ProductFilters = {limit: 12, offset: 0};
+  numpages!: Number
+  page: Number = 0
+  // paginated_products!: Product[][]
+  // ppp: number = 12;
   // numpag!: number
 
   constructor(
@@ -37,8 +39,14 @@ export class ShopComponent implements OnInit {
         this.categories = categories
     })
     this.getCategoryProducts()
-
   }
+
+  changePage(page: number) {
+    this.productFilters.offset = page
+    this.getFilteredProducts()
+    
+  }
+
   getCategoryProducts() {
     if (this.slugCategory) {
       this._categoryService.getCategory(this.slugCategory)
@@ -46,17 +54,10 @@ export class ShopComponent implements OnInit {
           this.products = category.products
       })
     } else {
-    // TODO Fer la paginacio, diseñarla i aprofitar el offset del productFilters
-    
-    this._productService.allProducts()
-      .subscribe((products)=>{
-        this.products = products
-      })
+          
     // PRODUCTES FILTRATS PER BBDD
-    // this._productService.filteredProducts(this.productFilters)
-    //   .subscribe((products)=>{        
-    //     this.products = products
-    //   })
+    
+    this.getFilteredProducts()
 
     // PRODUCTES FILTRATS PER EL CLIENT
     // this._productService.allProducts()
@@ -65,7 +66,8 @@ export class ShopComponent implements OnInit {
     //   })
     }
   } 
-
+  
+  
   // paginate_products(products: Product[]){
   //   this.numpag = Math.ceil(products.length/this.ppp)    
   //   let prods: Product[][] = []
@@ -96,5 +98,11 @@ export class ShopComponent implements OnInit {
   //   }
   // }
 
-
+  getFilteredProducts() {
+    this._productService.filteredProducts(this.productFilters)
+    .subscribe((filteredProducts)=>{      
+      this.products = filteredProducts.products
+      this.numpages = Math.ceil(filteredProducts.numproducts/this.productFilters.limit)
+    })
+  }
 }

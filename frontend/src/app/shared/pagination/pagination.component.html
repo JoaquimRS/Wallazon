@@ -1,0 +1,5 @@
+<div class="pagination">
+    <ul>
+        <li *ngFor="let item of [].constructor(numpages); let i = index" (click)="changePage(i)">{{i + 1}}</li>
+    </ul>
+</div>

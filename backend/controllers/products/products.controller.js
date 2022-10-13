@@ -1,3 +1,4 @@
+const { products } = require("..");
 const { Product } = require("../../models/index");
 const { param } = require("../../routes");
 
@@ -18,10 +19,15 @@ const { param } = require("../../routes");
     }
   };
 
-  exports.findFilteredProducts = async (params) =>{
+  exports.findFilteredProducts = async (filters) =>{
     try {
-      const data = await Product.find().skip(params.offset*params.limit).limit(params.limit);
-      return data;
+      const data = await Product.find().skip(filters.offset*filters.limit).limit(filters.limit)
+      const numproducts = await Product.find().countDocuments()
+      const res = {
+        numproducts: numproducts,
+        products : data
+      }
+      return res;
     } catch (err) {
       return err;
     }
