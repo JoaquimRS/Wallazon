@@ -46,7 +46,8 @@ export class CarouselComponent{
             perView: 6
           }
         }
-      }
+      },
+      
     })
   }
 

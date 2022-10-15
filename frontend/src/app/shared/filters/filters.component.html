@@ -5,7 +5,8 @@
         <label for="categories">Category</label>
         <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
         <div class="drop-down-filter">
-            <select name="categoy" id="category" formControlName="category" (change)="applyFilters()" [(ngModel)]="slugCategory">
+            <select name="categoy" id="category" formControlName="category" (change)="applyFilters()" [(ngModel)]="inFilters.category">
+                <option value="">Todas las categorias</option>
                 <option *ngFor="let category of categories" [value]="category.slug">{{category.title}}</option>
             </select>
         </div>

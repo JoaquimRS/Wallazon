@@ -4,7 +4,7 @@ const { param } = require("../../routes");
 
   exports.findAll = async () => {
     try {
-      const data = await Product.find();
+      const data = await Product.find([["price", 1]]);
       return data;
     } catch (err) {
       return err;
@@ -25,11 +25,12 @@ const { param } = require("../../routes");
       let checkContent = (filter,otherwise) => {
         return filter != "undefined" && filter ? filter : otherwise;
       }
-
+      let order_f
       let limit = checkContent(filters.limit,12)
       let offset = checkContent(filters.offset,0)
       let category = checkContent(filters.category, null)
       let condition = checkContent(filters.condition, null)
+      let order = checkContent(filters.order, null)
 
       if (condition) {
         query.condition = {$in:filters.condition}
@@ -37,15 +38,20 @@ const { param } = require("../../routes");
       if (category) {
         query.category = {$in:category}
       }
+      if (order) {
+        order_f=[[order, -1]]
 
+      } else {
+        order_f=[["price", 1]]
+      }
       
-      const data = await Product.find(query).skip(offset*limit).limit(limit)
-      const numproducts = await Product.find(query).countDocuments()
       const res = {
-        numproducts: numproducts,
-        products : data
+        numproducts: await Product.find(query).countDocuments(),
+        products : await Product.find(query).sort(order_f).skip(offset*limit).limit(limit)
       }
       return res;
+      
+        
     } catch (err) {
       return err;
     }

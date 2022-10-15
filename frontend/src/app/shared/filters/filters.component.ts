@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Category, ProductFilters } from 'src/app/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'filters',
@@ -11,7 +11,6 @@ export class FiltersComponent implements OnInit {
 
   @Input() categories! : Category[]
   @Input() inFilters!: ProductFilters
-  @Input() slugCategory? : string | null
   @Output() outFilters = new EventEmitter<ProductFilters>();
   filtersForm: FormGroup
   conditions: string[] = ["Nuevo","Semi Nuevo","Buen Estado","Aceptable"];
@@ -19,8 +18,7 @@ export class FiltersComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.filtersForm = this.fb.group({
       category: [''],
-      condition: this.fb.array([]),
-      order: ['']
+      condition: this.fb.array([])
     })
   }
 
@@ -29,14 +27,9 @@ export class FiltersComponent implements OnInit {
   }
 
   applyFilters() {
-    const filters: ProductFilters = {
-      category: this.filtersForm.get("category")?.value,
-      condition: this.filtersForm.get("condition")?.value,
-      limit: this.inFilters.limit, 
-      offset: this.inFilters.offset
-    }
-
-    this.outFilters.emit(filters)
+    this.inFilters.category = this.filtersForm.get("category")?.value
+    this.inFilters.condition = this.filtersForm.get("condition")?.value
+    this.outFilters.emit(this.inFilters)
     
   }
 

@@ -1,12 +1,12 @@
 <main>
     <aside>
         <div class="filters">
-            <order></order>
-            <filters [categories]="categories" [inFilters]="productFilters" [slugCategory]="slugCategory" (outFilters)="applyFilters($event)"></filters>
+            <filters [categories]="categories" [inFilters]="productFilters" (outFilters)="applyFilters($event)"></filters>
         </div>
     </aside>
     <article>
         <section>
+            <order [inFilters]="productFilters" (outFilters)="applyFilters($event)"></order>
             <product-list [products]="products"></product-list>
             <pagination class="pagination" [numpages]="numpages" (page)="changePage($event)"></pagination>
         </section>

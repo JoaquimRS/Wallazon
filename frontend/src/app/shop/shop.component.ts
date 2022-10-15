@@ -31,6 +31,7 @@ export class ShopComponent implements OnInit {
     private aRouter : ActivatedRoute,
     ) {
       this.slugCategory = this.aRouter.snapshot.paramMap.get('slugCategory');
+      this.productFilters.category = this.slugCategory ? this.slugCategory : ""
      }
 
   ngOnInit(): void {    
@@ -46,11 +47,9 @@ export class ShopComponent implements OnInit {
     this.getFilteredProducts()
   }
 
-  applyFilters(filters: ProductFilters) {
-    
+  applyFilters(filters: ProductFilters) {     
     this.productFilters = filters    
     this.getFilteredProducts()
-    
   }
 
   getCategoryProducts() {

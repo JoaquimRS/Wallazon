@@ -1,0 +1,90 @@
+.orders {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order {
+    width: 15%;
+    border: 5px solid #443C6B;
+    border-radius: 20px;
+    color: #7C6EC4;
+    position: relative;
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+.order > label {
+    cursor: pointer;
+    display: block;
+    color: #443C6B;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 10px;
+    width: 100%;
+}
+
+.order > fa-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #443C6B;
+    z-index: 1;
+    transition: ease-in-out, transform .40s ease-in-out;
+}
+
+.drop-down-order {
+    padding-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.show-drop-down,
+.drop-down-order {
+    display: none;
+}
+
+.show-drop-down:checked~.drop-down-order {
+    display: block;
+    transition: ease-in-out, transform .40s ease-in-out;
+    margin-left: 20px;
+}
+
+.show-drop-down:checked~fa-icon {
+    transform: rotate(180deg);
+    transition: ease-in-out, transform .40s ease-in-out;
+}
+
+.order-element {
+    margin: 5px;
+
+}
+.label{
+    display: block;
+}
+
+.label fa-icon {
+    display: inline-block;
+    transition: ease-in-out, transform .40s ease-in-out;
+}
+
+.show-order-drop-down {
+    display: none;
+}
+
+.show-order-drop-down:checked + fa-icon {
+    display: inline-block;
+    transform: rotate(180deg);
+    transition: ease-in-out, transform .40s ease-in-out;
+}
+
+@media (max-width: 1000px) {
+    .orders{
+        justify-content: center;
+        margin-top: -20px;
+    }
+    .order {
+        width: 100%;
+    }
+}

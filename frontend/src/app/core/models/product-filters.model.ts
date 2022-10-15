@@ -1,7 +1,7 @@
 export interface ProductFilters {
-    category?: string,
+    category?: string | null,
     condition?: string[],
-    order?: string[],
+    order?:string[],
     limit: number,
     offset: number
 }
