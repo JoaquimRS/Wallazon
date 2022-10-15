@@ -1,5 +1,6 @@
+
 <div class="keen-slider carrousel" #sliderRef>
-    <div class="keen-slider__slide" *ngFor="let category of categories">
+    <div class="keen-slider__slide slider" *ngFor="let category of categories">
         <div class="container" [routerLink]="['/shop/categories/',category.slug]">
             <fa-icon [icon]="[category.image.prefix,category.image.name]"></fa-icon>
             <p>{{category.title}}</p>

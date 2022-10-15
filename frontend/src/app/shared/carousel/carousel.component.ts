@@ -13,16 +13,40 @@ import { Category } from "src/app/core";
 })
 export class CarouselComponent{
   @Input() categories: Category [] = []
-    
+
   @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
 
   slider!: KeenSliderInstance
 
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      slides: {
-        perView: 6,
-      },
+      breakpoints: {
+        '(min-width: 200px)': {
+          slides: {
+            perView: 1,
+          },
+        },
+        '(min-width: 400px)': {
+          slides: {
+            perView: 2,
+          },
+        },
+        '(min-width: 600px)': {
+          slides: {
+            perView: 3,
+          },
+        },
+        '(min-width: 900px)': {
+          slides: {
+            perView: 4
+          }
+        },
+        '(min-width: 1200px)': {
+          slides: {
+            perView: 6
+          }
+        }
+      }
     })
   }
 

@@ -44,6 +44,12 @@ export class ShopComponent implements OnInit {
   changePage(page: number) {
     this.productFilters.offset = page
     this.getFilteredProducts()
+  }
+
+  applyFilters(filters: ProductFilters) {
+    
+    this.productFilters = filters    
+    this.getFilteredProducts()
     
   }
 

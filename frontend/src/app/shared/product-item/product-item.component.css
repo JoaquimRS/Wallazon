@@ -44,3 +44,9 @@ img:hover {
     font-weight: 700;
     font-size: 1.3em;
 }
+
+@media (max-width: 750px) {
+    .images img {
+        height: auto;
+    }
+}

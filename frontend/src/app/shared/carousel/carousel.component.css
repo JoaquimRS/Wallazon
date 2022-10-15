@@ -2,10 +2,15 @@
 
 .carrousel {
     display: flex;
-    text-align: center;    
+    text-align: center;   
 }
 
-.carrousel .container {
+.slider {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
     color: #443C6B;
     border: 6px solid #443C6B;
     background-color: white;
@@ -19,18 +24,26 @@
     flex-direction: column;
     justify-content: space-evenly;
 
+
 }
 
 
-.carrousel .container:hover {
+.container:hover {
     transform: scale(1.2);
     cursor: pointer;
 }
 
-.carrousel .container fa-icon {
+.container fa-icon {
     font-size: 60px;
     margin: 0;
 }
-.carrousel .container p {
+.container p {
     margin: 0;
+}
+
+@media(max-width: 600px) {
+    .container {
+        width: 160px;
+        height: 160px;
+    }
 }

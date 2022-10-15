@@ -33,3 +33,8 @@ section {
  */
 
 
+@media (max-width: 650px) {
+    main {
+        width: 95%;
+    }
+}

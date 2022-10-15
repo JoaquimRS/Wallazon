@@ -1,10 +1,11 @@
 <div class="filters">
+<form [formGroup]="filtersForm">
     <div class="filter">
         <input type="checkbox" class="show-drop-down" id="categories">
         <label for="categories">Category</label>
         <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
         <div class="drop-down-filter">
-            <select name="categoy" id="category">
+            <select name="categoy" id="category" formControlName="category" (change)="applyFilters()" [(ngModel)]="slugCategory">
                 <option *ngFor="let category of categories" [value]="category.slug">{{category.title}}</option>
             </select>
         </div>
@@ -14,11 +15,10 @@
         <label for="show-drop-down-condition">Condición</label>
         <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
         <div class="drop-down-filter">
-            <label for="nuevo"><input type="checkbox" id="nuevo">Nuevo</label><br>
-            <label for="seminuevo"><input type="checkbox" id="seminuevo">Seminuevo</label><br>
-            <label for="bueno"><input type="checkbox" id="bueno">Bueno</label><br>
-            <label for="aceptable"><input type="checkbox" id="aceptable">Aceptable</label><br>
+            <div class="filter-input" *ngFor="let condition of conditions" >
+                <label for="{{condition}}"><input type="checkbox" id="{{condition}}" [value]="condition" (change)="onCheckboxChange($event)">{{condition}}</label><br>
+            </div>
         </div>
     </div>
-    
+</form>
 </div>

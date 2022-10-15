@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
-// import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FiltersComponent } from './filters/filters.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -16,19 +17,23 @@ import { PaginationComponent } from './pagination/pagination.component';
     ProductItemComponent,
     ProductListComponent,
     FiltersComponent,
-    PaginationComponent
+    PaginationComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CarouselComponent,
     ProductItemComponent,
     ProductListComponent,
     FiltersComponent,
-    PaginationComponent
+    PaginationComponent,
+    OrderComponent
   ]
 })
 export class SharedModule { }

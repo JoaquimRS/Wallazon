@@ -1,7 +1,8 @@
 <main>
     <aside>
         <div class="filters">
-            <filters [categories]="categories"></filters>
+            <order></order>
+            <filters [categories]="categories" [inFilters]="productFilters" [slugCategory]="slugCategory" (outFilters)="applyFilters($event)"></filters>
         </div>
     </aside>
     <article>

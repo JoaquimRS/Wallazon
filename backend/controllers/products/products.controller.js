@@ -21,8 +21,26 @@ const { param } = require("../../routes");
 
   exports.findFilteredProducts = async (filters) =>{
     try {
-      const data = await Product.find().skip(filters.offset*filters.limit).limit(filters.limit)
-      const numproducts = await Product.find().countDocuments()
+      let query = {}
+      let checkContent = (filter,otherwise) => {
+        return filter != "undefined" && filter ? filter : otherwise;
+      }
+
+      let limit = checkContent(filters.limit,12)
+      let offset = checkContent(filters.offset,0)
+      let category = checkContent(filters.category, null)
+      let condition = checkContent(filters.condition, null)
+
+      if (condition) {
+        query.condition = {$in:filters.condition}
+      }
+      if (category) {
+        query.category = {$in:category}
+      }
+
+      
+      const data = await Product.find(query).skip(offset*limit).limit(limit)
+      const numproducts = await Product.find(query).countDocuments()
       const res = {
         numproducts: numproducts,
         products : data
