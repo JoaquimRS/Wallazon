@@ -29,9 +29,13 @@ const { param } = require("../../routes");
       let limit = checkContent(filters.limit,12)
       let offset = checkContent(filters.offset,0)
       let category = checkContent(filters.category, null)
+      let search = checkContent(filters.search, null)
       let condition = checkContent(filters.condition, null)
       let order = checkContent(filters.order, null)
 
+      if (search) {
+        query.title = {"$regex":search, "$options":"i"}
+      }
       if (condition) {
         query.condition = {$in:filters.condition}
       }
@@ -44,7 +48,7 @@ const { param } = require("../../routes");
       } else {
         order_f=[["price", 1]]
       }
-      
+
       const res = {
         numproducts: await Product.find(query).countDocuments(),
         products : await Product.find(query).sort(order_f).skip(offset*limit).limit(limit)
@@ -61,8 +65,8 @@ const { param } = require("../../routes");
     try {
 
       const title = await Product.find({"title":{"$regex":query, "$options":"i"}})
-      const descr = await Product.find({"description":{"$regex":query, "$options":"i"}})
-      title.push(descr)
+      // const descr = await Product.find({"description":{"$regex":query, "$options":"i"}})
+      // title.push(descr)
       return title
     } catch (err) {
       return err

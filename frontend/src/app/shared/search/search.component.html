@@ -1,5 +1,5 @@
 <fa-icon icon="search" class="search-icon"></fa-icon>
-<input type="text" class="search-input" [ngModel]="search" (ngModelChange)="requestProduct($event)" list="productsSearch">
+<input type="text" class="search-input" [(ngModel)]="search" (keydown.enter)="submitSearch()" (ngModelChange)="requestProduct($event)" list="productsSearch">
 <datalist id="productsSearch">
     <option *ngFor="let product of products">{{product.title}}</option>
 </datalist>

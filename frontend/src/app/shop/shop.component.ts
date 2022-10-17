@@ -34,6 +34,7 @@ export class ShopComponent implements OnInit {
       this.slugCategory = this.aRouter.snapshot.paramMap.get('slugCategory');
       this.productFilters.category = this.slugCategory ? this.slugCategory : ""
       this.filtersURL = this.aRouter.snapshot.paramMap.get('filtersURL');
+      this.filtersURL ? this.productFilters = JSON.parse(atob(this.filtersURL)) : null      
      }
 
   ngOnInit(): void {    
@@ -44,9 +45,7 @@ export class ShopComponent implements OnInit {
     this.getCategoryProducts()
   }
 
-  changePage(page: number) {
-    console.log("changePage");
-    
+  changePage(page: number) {    
     this.productFilters.offset = page
     this.location.replaceState('/shop/'+btoa(JSON.stringify(this.productFilters)))
     this.getFilteredProducts()
@@ -71,14 +70,11 @@ export class ShopComponent implements OnInit {
       })
     
     } else {    
-      if (this.filtersURL) {        
-        this.productFilters = JSON.parse(atob(this.filtersURL))
-      }
       this.getFilteredProducts()
     }
   } 
 
-  getFilteredProducts() {
+  getFilteredProducts() {    
     this._productService.filteredProducts(this.productFilters)
     .subscribe((filteredProducts)=>{      
       this.products = filteredProducts.products
