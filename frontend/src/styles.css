@@ -51,33 +51,10 @@ img.logo {
     display: flex;
     justify-content: space-around;
 }
-
 .search {
     width: 50%;
     height: 40px;
     position: relative;
-}
-.search-icon {
-    position: absolute;
-    margin-top: 12px;
-    margin-left: 12px;
-    transform: scale(1.5);
-}
-.search-input {
-    width: 100%;
-    height: 100%;
-    font-size: 20px;
-    border-style: none;
-    border-radius: 20px;
-    border: 4px solid #13c1ac;
-    box-sizing: border-box;
-    background-color: #F2D4C6;
-    padding-left: 40px;
-    padding-right: 15px;
-}
-.search-input:focus {
-    outline: none;
-    border-color: #258b80;
 }
 
 header nav ul {

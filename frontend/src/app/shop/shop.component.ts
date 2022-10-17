@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { 
   CategoriesService, 
@@ -18,20 +19,21 @@ export class ShopComponent implements OnInit {
   products!: Product[]
   categories: Category[] = []
   slugCategory: string | null
+  filtersURL : any
   productFilters: ProductFilters = {limit: 12, offset: 0};
   numpages!: Number
   page: Number = 0
-  // paginated_products!: Product[][]
-  // ppp: number = 12;
-  // numpag!: number
 
   constructor(
     private _productService: ProductsService,
     private _categoryService : CategoriesService,
     private aRouter : ActivatedRoute,
+    private router : Router,
+    private location: Location
     ) {
       this.slugCategory = this.aRouter.snapshot.paramMap.get('slugCategory');
       this.productFilters.category = this.slugCategory ? this.slugCategory : ""
+      this.filtersURL = this.aRouter.snapshot.paramMap.get('filtersURL');
      }
 
   ngOnInit(): void {    
@@ -43,12 +45,20 @@ export class ShopComponent implements OnInit {
   }
 
   changePage(page: number) {
+    console.log("changePage");
+    
     this.productFilters.offset = page
+    this.location.replaceState('/shop/'+btoa(JSON.stringify(this.productFilters)))
     this.getFilteredProducts()
   }
 
-  applyFilters(filters: ProductFilters) {     
+  applyFilters(filters: ProductFilters) { 
+    
     this.productFilters = filters    
+    
+    // this.router.navigate(['/shop',btoa(JSON.stringify(this.productFilters))])
+    this.location.replaceState('/shop/'+btoa(JSON.stringify(this.productFilters)))
+
     this.getFilteredProducts()
   }
 
@@ -56,52 +66,17 @@ export class ShopComponent implements OnInit {
     if (this.slugCategory) {
       this._categoryService.getCategory(this.slugCategory)
         .subscribe((category) => {          
+          this.numpages = Math.ceil(category.products.length/this.productFilters.limit)          
           this.products = category.products
       })
-    } else {
-          
-    // PRODUCTES FILTRATS PER BBDD
     
-    this.getFilteredProducts()
-
-    // PRODUCTES FILTRATS PER EL CLIENT
-    // this._productService.allProducts()
-    //   .subscribe((products)=>{
-    //       this.paginate_products(products)
-    //   })
+    } else {    
+      if (this.filtersURL) {        
+        this.productFilters = JSON.parse(atob(this.filtersURL))
+      }
+      this.getFilteredProducts()
     }
   } 
-  
-  
-  // paginate_products(products: Product[]){
-  //   this.numpag = Math.ceil(products.length/this.ppp)    
-  //   let prods: Product[][] = []
-  //   let divprods: Product[] = []
-  //   let j = 0
-  //   let lng = this.ppp
-  //   for (let i = 1; i <= this.numpag; i++) {
-  //     lng=lng + j
-  //     for (j; j < lng; j++) {
-  //       if (products[j]){
-  //         divprods.push(products[j]);
-  //       } else {
-  //         break
-  //       }
-  //     }
-  //     prods.push(divprods)
-  //     divprods = []
-  //   }
-  //   this.paginated_products = prods
-  //   this.setPagination()
-  // }
-  
-  // setPagination(page?: number) {
-  //   if (page) {
-  //     this.products = this.paginated_products[page]
-  //   } else {
-  //     this.products = this.paginated_products[0]
-  //   }
-  // }
 
   getFilteredProducts() {
     this._productService.filteredProducts(this.productFilters)

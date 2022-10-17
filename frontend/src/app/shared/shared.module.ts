@@ -10,6 +10,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FiltersComponent } from './filters/filters.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { OrderComponent } from './order/order.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [

@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'categories/:slugCategory',
     component: ShopComponent
+  },
+  {
+    path: ':filtersURL',
+    component: ShopComponent
   }
 ]
 
