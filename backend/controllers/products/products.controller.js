@@ -4,7 +4,7 @@ const { param } = require("../../routes");
 
   exports.findAll = async () => {
     try {
-      const data = await Product.find([["price", 1]]);
+      const data = await Product.find().sort([["price", 1]]);
       return data;
     } catch (err) {
       return err;
@@ -54,6 +54,18 @@ const { param } = require("../../routes");
         
     } catch (err) {
       return err;
+    }
+  }
+
+  exports.findSearchProducts = async (query) => {
+    try {
+
+      const title = await Product.find({"title":{"$regex":query, "$options":"i"}})
+      const descr = await Product.find({"description":{"$regex":query, "$options":"i"}})
+      title.push(descr)
+      return title
+    } catch (err) {
+      return err
     }
   }
 
