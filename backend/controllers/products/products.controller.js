@@ -1,6 +1,4 @@
-const { products } = require("..");
 const { Product } = require("../../models/index");
-const { param } = require("../../routes");
 
   exports.findAll = async () => {
     try {
@@ -13,7 +11,7 @@ const { param } = require("../../routes");
   exports.findSkiped = async (skip) => {
     try {
       const data = await Product.find().skip(skip*4).limit(4);
-      return data;
+      return data
     } catch (err) {
       return err;
     }
@@ -64,10 +62,8 @@ const { param } = require("../../routes");
   exports.findSearchProducts = async (query) => {
     try {
 
-      const title = await Product.find({"title":{"$regex":query, "$options":"i"}})
-      // const descr = await Product.find({"description":{"$regex":query, "$options":"i"}})
-      // title.push(descr)
-      return title
+      const searchProducts = await Product.find({"title":{"$regex":query, "$options":"i"}})
+      return searchProducts.map((product) => product.titleProduct())
     } catch (err) {
       return err
     }

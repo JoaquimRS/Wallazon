@@ -42,4 +42,14 @@ CategorySchema.methods.slugify = function () {
     slug(this.title) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36);
 };
 
+CategorySchema.methods.toJSONFor = function () {
+  return {
+    title: this.title,
+    slug: this.slug,
+    description: this.description,
+    image: this.image,
+    subcategories: this.subcategories
+  }
+}
+
 module.exports = mongoose.model("Categorie", CategorySchema);

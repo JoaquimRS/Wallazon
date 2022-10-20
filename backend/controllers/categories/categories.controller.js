@@ -3,7 +3,7 @@ const { Category } = require("../../models/index")
 exports.findAll = async () => {
     try {
       const data = await Category.find();
-      return data;
+      return data.map((category) => category.toJSONFor());
     } catch (err) {
       return err;
     }

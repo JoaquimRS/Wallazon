@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 var uniqueValidator = require("mongoose-unique-validator");
 var slug = require("slug");
 
-
 const ProductSchema = mongoose.Schema({
   slug: {
     type: String,
@@ -53,7 +52,7 @@ const ProductSchema = mongoose.Schema({
 
 ProductSchema.plugin(uniqueValidator, { message: "is already taken" });
 
-ProductSchema.pre("validate", function (next) {
+ProductSchema.pre("validate",(next) => {
   if (!this.slug) {
     this.slugify();
   }
@@ -61,7 +60,7 @@ ProductSchema.pre("validate", function (next) {
   next();
 });
 
-ProductSchema.methods.slugify = function () {
+ProductSchema.methods.slugify = () => {
   this.slug =
     slug(this.title) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36);
   
@@ -69,5 +68,11 @@ ProductSchema.methods.slugify = function () {
     this.images[i] = this.slug + this.images[i] 
   }
 };
+
+ProductSchema.methods.titleProduct = function () {
+  return {
+    title: this.title
+  }
+}
 
 module.exports = mongoose.model("Product", ProductSchema);
