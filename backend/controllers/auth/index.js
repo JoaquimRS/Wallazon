@@ -10,12 +10,37 @@ exports.getUsers = async (req, res) => {
     res.json(users)
 }
 
-exports.addUser = async (req, res) => {
+exports.register = async (req, res) => {
     let user
     try {
-        user = await authController.addOne(req.body)
+        user = await authController.register(req.body)
     } catch (err) {
         user = err
     }
     res.json(user)
+}
+
+exports.login = async (req,res) => {
+    let user 
+    try {
+        user = await authController.login(req.body)
+    } catch (err) {
+        user = err
+    }
+    res.json(user)
+}
+
+exports.deleteUser = async (req,res) => {
+    let data
+    try {
+        data = await authController.deleteOne(req.params.uuid)
+    } catch (err) {
+        data = err
+    }
+    res.json(data)
+}
+
+exports.getToken = async (req,res) => {
+
+    res.json(req.headers.authorization)
 }

@@ -1,0 +1,25 @@
+<main>
+    <div class="container">
+        <header>
+            <h1>Iniciar Sesión</h1>
+        </header>
+        <div class="form">
+
+            <form action="">
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Usuario</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="password" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Contraseña</label>
+                </div>
+                <button>Iniciar Sesión</button>
+            </form>
+        </div>
+        <footer>
+            <a >Recuperar contraseña</a>
+            <a [routerLink]="['/auth/register']">Registrarse</a>
+        </footer>
+    </div>
+</main>

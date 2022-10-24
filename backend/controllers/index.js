@@ -1,7 +1,7 @@
 const controllers = {
     products: require("./products/"),
     categories: require("./categories"),
-    auth: require("./auth")
+    auth: require("./auth"),
 }
 
 module.exports = controllers;
