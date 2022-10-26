@@ -5,21 +5,23 @@
         </header>
         <div class="form">
 
-            <form action="">
+            <form [formGroup]="loginForm">
+                <span>{{user_error}}</span>
                 <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <input required="" type="text" name="text" formControlName="user" (keyup.enter)="password.focus()"  autocomplete="off" class="input">
                     <label class="user-label">Usuario</label>
                 </div>
+                <span>{{password_error}}</span>
                 <div class="input-group">
-                    <input required="" type="password" name="text" autocomplete="off" class="input">
+                    <input required="" type="password" name="text" formControlName="password" #password (keyup.enter)="login()" autocomplete="off" class="input">
                     <label class="user-label">Contraseña</label>
                 </div>
-                <button>Iniciar Sesión</button>
             </form>
+            <button (click)="login()">Iniciar Sesión</button>
         </div>
-        <footer>
+        <div class="footer">
             <a >Recuperar contraseña</a>
             <a [routerLink]="['/auth/register']">Registrarse</a>
-        </footer>
+        </div>
     </div>
 </main>

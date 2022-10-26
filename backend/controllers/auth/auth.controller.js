@@ -12,7 +12,7 @@ exports.findAll = async () => {
 exports.register = async (userInfo) => {
     try {
         const data = await User.create(userInfo)
-        return data;
+        return data.toAuthJSON();
     } catch (err) {
         return err;
     }
@@ -20,8 +20,7 @@ exports.register = async (userInfo) => {
 
 exports.login = async (userInfo) => {
     try {
-        const data = await User.findOne({"username":userInfo.user})
-        
+        const data = await User.findOne({"username":userInfo.username})        
         if (await data.validatePassword(userInfo.password)) {
             return data.toAuthJSON()
         } else {

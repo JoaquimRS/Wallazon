@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var argon2 = require('argon2')
+var CryptoJS = require("crypto-js")
 var uniqueValidator = require("mongoose-unique-validator");
 var slug = require("slug");
 var jwt = require('jsonwebtoken')
@@ -47,18 +48,24 @@ UserSchema.pre("validate", async function (next) {
     if (!this.uuid) {
         this.uuidGenerate()
     }
-    this.avatar = this.username + this.avatar
+    // if (this.avatar) {
+    //     this.avatar = this.username + this.avatar
+    // }
     this.password = await this.hashPassword()
     next()
 })
 
 UserSchema.methods.hashPassword = async function() {
-    return argon2.hash(this.password)
+    var bytes  = CryptoJS.AES.decrypt(this.password,secret);
+    var decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    return argon2.hash(decryptedData)
 }
 
 UserSchema.methods.validatePassword = async function(password) {
-    try {
-        return await argon2.verify(this.password,password)
+    try {        
+        var bytes  = CryptoJS.AES.decrypt(password,secret);
+        var decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+        return await argon2.verify(this.password,decryptedData)
     } catch (error) {
         return error
     }

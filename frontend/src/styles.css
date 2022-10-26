@@ -76,6 +76,9 @@ header nav li {
     cursor: pointer;
 }
 
+.user-image {
+    height: 20px;
+}
 footer {
     display: flex;
     align-items: center;

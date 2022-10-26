@@ -1,3 +1,7 @@
+.content {
+    height: -webkit-fill-available;
+}
+
 @media (max-width: 600px)  {
     .content {
         margin-top: 90px;

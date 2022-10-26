@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
 exports.login = async (req,res) => {
     let user 
     try {
-        user = await authController.login(req.body)
+        user = await authController.login(req.query)
     } catch (err) {
         user = err
     }

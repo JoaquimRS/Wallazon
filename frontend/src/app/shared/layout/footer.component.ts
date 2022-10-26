@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  user:boolean = false
+
   constructor() { }
 
   ngOnInit(): void {
