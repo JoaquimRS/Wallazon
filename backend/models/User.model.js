@@ -4,7 +4,7 @@ var CryptoJS = require("crypto-js")
 var uniqueValidator = require("mongoose-unique-validator");
 var slug = require("slug");
 var jwt = require('jsonwebtoken')
-var {secret} = require("../config").secret
+var {secret} = require("../config")
 
 const UserSchema = mongoose.Schema({
     uuid:{

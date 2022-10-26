@@ -1,8 +1,8 @@
 let router = require("express").Router()
-const { auth } = require("../controllers/index")
+var { auth } = require("../controllers/index")
+var {middlewareAuth} = require("../middlewares")
 
-
-router.get("/",auth.getUsers)
+router.get("/",middlewareAuth.required,auth.getUsers)
 router.post("/",auth.register)
 router.get("/login",auth.login)
 router.delete("/:uuid",auth.deleteUser)

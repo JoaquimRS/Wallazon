@@ -1,6 +1,7 @@
 const authController = require("./auth.controller")
 
 exports.getUsers = async (req, res) => {
+    console.log(req.auth);
     let users
     try {
         users = await authController.findAll()
