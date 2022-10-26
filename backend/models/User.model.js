@@ -48,9 +48,9 @@ UserSchema.pre("validate", async function (next) {
     if (!this.uuid) {
         this.uuidGenerate()
     }
-    // if (this.avatar) {
-    //     this.avatar = this.username + this.avatar
-    // }
+    if (this.avatar) {
+        this.avatar = this.username + "_" + this.avatar
+    }
     this.password = await this.hashPassword()
     next()
 })
@@ -93,8 +93,30 @@ UserSchema.methods.toAuthJSON = function (){
         email: this.email,
         token: this.generateToken(),
         bio: this.bio,
-        image: this.image
+        avatar: this.avatar
     }
+}
+
+UserSchema.methods.toProfile = function (owner) {
+    if (owner) {
+        return {
+            username: this.username,
+            email: this.email,
+            bio: this.bio,
+            avatar: this.avatar,
+            products: this.products,
+            favorites: this.favorites
+        }
+    } else {
+        return {
+            username: this.username,
+            bio: this.bio,
+            avatar: this.avatar,
+            products: this.products
+        }
+    }
+
+    
 }
 
 module.exports = mongoose.model("User", UserSchema);

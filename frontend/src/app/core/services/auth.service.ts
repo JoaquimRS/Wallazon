@@ -14,7 +14,7 @@ export class AuthService {
   ) { }
 
   login(userInfo: any): Observable<User> {    
-    return this._apiService.get('/auth/login',new HttpParams({fromObject: userInfo}))
+    return this._apiService.get('/auth/',new HttpParams({fromObject: userInfo}))
   }
   register(userInfo: Object): Observable<User> {
     return this._apiService.post('/auth/',userInfo)

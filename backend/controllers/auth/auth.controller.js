@@ -1,13 +1,5 @@
 const { User } = require("../../models/index")
 
-exports.findAll = async () => {
-    try {
-        const data = await User.find()
-        return data;
-    } catch (err) {
-        return err;
-    }
-}
 
 exports.register = async (userInfo) => {
     try {
