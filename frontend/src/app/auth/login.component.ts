@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 
 import { environment } from 'src/environments/environment';
-import { User, userInfo } from '../core';
-import { AuthService } from '../core/services/auth.service';
+import { User, userInfo, AuthService, UserService } from '../core';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +14,13 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   password: string = '';
   userInfo!: userInfo
-  user!: User
   user_error: string = ""
   password_error: string = ""
   
   constructor(
     private fb:FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _userService: UserService
   ) { 
     this.loginForm = this.fb.group({
       user: ['',Validators.required],
@@ -43,8 +42,12 @@ export class LoginComponent implements OnInit {
   async submitLogin(userInfo: userInfo) {    
     this._authService.login(userInfo)
     .subscribe((user)=>{
-      console.log(user);
+      this._userService.saveUser(user)
       
     })
+  }
+
+  deleteUser() {
+    this._userService.deleteUser()
   }
 }

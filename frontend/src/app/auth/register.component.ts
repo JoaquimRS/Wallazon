@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 
-import { userInfo } from '../core';
+import { userInfo, AuthService, UserService } from '../core';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '../core/services/auth.service';
 
 
 
@@ -24,7 +23,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _userService: UserService
   ) { 
     this.registerForm = this.fb.group({
       user: ['',Validators.required],
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
   async submitRegister(userInfo: userInfo) {
     this._authService.register(userInfo)
     .subscribe((user)=>{
-      console.log(user);
+      this._userService.saveUser(user)
       
     })
   }
