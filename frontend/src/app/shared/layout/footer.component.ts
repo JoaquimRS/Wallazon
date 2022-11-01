@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/core';
+import { User, UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-layout-footer',
@@ -8,6 +8,7 @@ import { UserService } from 'src/app/core';
 export class FooterComponent implements OnInit {
 
   user:boolean = false
+  currentUser!: User
 
   constructor(
     private _userService : UserService
@@ -17,8 +18,11 @@ export class FooterComponent implements OnInit {
     this._userService.isAuthenticated.subscribe(
       (isAuthenticated) => {
         this.user = isAuthenticated
-      }
-    )
+    })
+    this._userService.currentUser.subscribe(
+      (currentUser) => {
+        this.currentUser = currentUser
+    })
   }
 
 }

@@ -59,8 +59,11 @@ export class RegisterComponent implements OnInit {
   async submitRegister(userInfo: userInfo) {
     this._authService.register(userInfo)
     .subscribe((user)=>{
-      this._userService.saveUser(user)
-      
+      if (user.hasOwnProperty("errors")) {
+        this.user_error = "*Usuario o email no disponibles"
+      } else {
+        this._userService.saveUser(user)
+      }
     })
   }
 

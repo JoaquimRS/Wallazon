@@ -18,14 +18,25 @@ export class UserService {
     private _jwtService : JwtService,
   ) { }
 
+  populate() {
+    if (this._jwtService.getToken()) {
+      // Demanar usuari a BBDD en els http interceptors agarran token y retornan usuari
+    }
+    
+  }
+
   saveUser(user: User) {
     this._jwtService.saveToken(user.token)
+
+    this.currentUserSubject.next(user)
 
     this.isAuthenticatedSubject.next(true)
   }
 
   deleteUser() {
     this._jwtService.destroyToken()
+
+    this.currentUserSubject.next({} as User)
 
     this.isAuthenticatedSubject.next(false)
   }

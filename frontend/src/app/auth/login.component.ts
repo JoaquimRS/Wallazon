@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 
 import { environment } from 'src/environments/environment';
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private _authService: AuthService,
-    private _userService: UserService
+    private _userService: UserService,
+    private router: Router
   ) { 
     this.loginForm = this.fb.group({
       user: ['',Validators.required],
@@ -41,9 +43,13 @@ export class LoginComponent implements OnInit {
   }  
   async submitLogin(userInfo: userInfo) {    
     this._authService.login(userInfo)
-    .subscribe((user)=>{
-      this._userService.saveUser(user)
-      
+    .subscribe((user)=>{      
+      if (Object.keys(user).length) {
+        this._userService.saveUser(user)
+        this.router.navigate(['/'])        
+      } else {
+        this.user_error = "*Usuario o contraseña incorrectos"
+      }      
     })
   }
 

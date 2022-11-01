@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'Wallazon';
-  constructor() {
+  constructor(
+    private _userService : UserService
+  ) {
   }
   ngOnInit() {
-    // this.userService.populate();
+    this._userService.populate();
   }
   
 }
