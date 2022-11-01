@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, distinctUntilChanged, Observable, ReplaySubject } from 'rxjs';
 import { User } from '../models';
+import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 
 @Injectable({
@@ -16,11 +17,16 @@ export class UserService {
 
   constructor(
     private _jwtService : JwtService,
+    private _apiService : ApiService
   ) { }
 
   populate() {
     if (this._jwtService.getToken()) {
-      // Demanar usuari a BBDD en els http interceptors agarran token y retornan usuari
+      this._apiService.get('/users/')
+      .subscribe(
+        user => this.saveUser(user),
+        err => this.deleteUser()       
+      )
     }
     
   }

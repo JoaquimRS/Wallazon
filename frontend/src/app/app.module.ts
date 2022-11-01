@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { SearchComponent } from './shared/search/search.component';
+import { CoreModule } from './core';
 
 
 
@@ -23,6 +24,7 @@ import { SearchComponent } from './shared/search/search.component';
     BrowserModule,
     FormsModule,
     HomeModule,
+    CoreModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,

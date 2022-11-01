@@ -10,6 +10,16 @@ exports.getUsers = async (req, res) => {
     res.json(users)
 }
 
+exports.getUser = async (req, res) => {
+    let user
+    try {
+        user = await userController.findOne(req.auth)
+    } catch (err) {
+        user = err
+    }
+    res.json(user)
+}
+
 exports.getUserProfile = async (req, res) => {
     let user
     try {

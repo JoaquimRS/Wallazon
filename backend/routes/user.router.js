@@ -2,7 +2,8 @@ let router = require("express").Router()
 var { user } = require("../controllers/index")
 var {middlewareAuth} = require("../middlewares")
 
-router.get("/",middlewareAuth.required,user.getUsers)
+router.get("/all",middlewareAuth.required,user.getUsers)
+router.get("/",middlewareAuth.required,user.getUser)
 router.post("/",middlewareAuth.required,user.setUserProfile)
 router.get("/:username",middlewareAuth.optional,user.getUserProfile)
 
