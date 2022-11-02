@@ -27,6 +27,8 @@ export class UserService {
         user => this.saveUser(user),
         err => this.deleteUser()       
       )
+    } else {
+      this.deleteUser()
     }
     
   }
