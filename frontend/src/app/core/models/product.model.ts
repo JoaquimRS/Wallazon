@@ -1,5 +1,5 @@
 export interface Product {
-    slug?:string;
+    slug:string;
     title:string;
     category:string;
     price:number;
@@ -11,5 +11,8 @@ export interface Product {
         long:string;
         city:string;
     };
+    likes:number;
+    userLike:boolean;
+
 
 }

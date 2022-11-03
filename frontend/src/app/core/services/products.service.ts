@@ -30,4 +30,8 @@ export class ProductsService {
   searchProducts(query: string): Observable<Product[]> {
     return this._apiService.get('/products/search/'+query)
   }
+
+  modUserLike(slug: string): Observable<any>{
+    return this._apiService.get('/products/like/'+slug)
+  }
 }

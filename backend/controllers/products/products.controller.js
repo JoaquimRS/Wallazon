@@ -1,24 +1,34 @@
-const { Product } = require("../../models/index");
+const { Product, User } = require("../../models/index");
 
-  exports.findAll = async () => {
+  exports.findAll = async (auth) => {
     try {
       const data = await Product.find().sort([["price", 1]]);
+      if (auth) {
+        const user = await User.findOne({uuid:auth.id},{likes:1,_id:0}).populate("likes")  
+        data.map(product => user.likes.map(likeProduct => product.slug == likeProduct.slug ? product.userLike = true : null))
+      }
       return data;
     } catch (err) {
       return err;
     }
   };
-  exports.findSkiped = async (skip) => {
+  exports.findSkiped = async (skip,auth) => {
     try {
       const data = await Product.find().skip(skip*4).limit(4);
+      if (auth) {
+        const user = await User.findOne({uuid:auth.id},{likes:1,_id:0}).populate("likes")  
+        data.map(product => user.likes.map(likeProduct => product.slug == likeProduct.slug ? product.userLike = true : null))
+      }
       return data
     } catch (err) {
       return err;
     }
   };
 
-  exports.findFilteredProducts = async (filters) =>{
+  exports.findFilteredProducts = async (filters,auth) =>{
     try {
+      
+      
       let query = {}
       let checkContent = (filter,otherwise) => {
         return filter != "undefined" && filter ? filter : otherwise;
@@ -51,6 +61,11 @@ const { Product } = require("../../models/index");
         numproducts: await Product.find(query).countDocuments(),
         products : await Product.find(query).sort(order_f).skip(offset*limit).limit(limit)
       }
+      if (auth) {
+        const user = await User.findOne({uuid:auth.id},{likes:1,_id:0}).populate("likes")  
+        res.products.map(product => user.likes.map(likeProduct => product.slug == likeProduct.slug ? product.userLike = true : null))
+      }
+
       return res;
       
         
@@ -104,4 +119,25 @@ const { Product } = require("../../models/index");
         return err;
     }
   }
+  exports.modLike = async (slug,auth) => {
+    try {
+      let hasLike = false
+      const user = await User.findOne({uuid:auth.id}).populate("likes")
+      const product = await Product.findOne({slug:slug})
+      
+      user.likes.map(like => like.slug == slug ? hasLike = true : null)
+      if (hasLike) {
+        await User.findOneAndUpdate({uuid:auth.id},{$pull:{"likes":product._id}})
+        await Product.findOneAndUpdate({slug:slug},{$inc:{"likes":-1}})
+        return "Remove Like"
+      } else {
+        await User.findOneAndUpdate({uuid:auth.id},{$push:{"likes":product._id}})
+        await Product.findOneAndUpdate({slug:slug},{$inc:{"likes":1}})
+        return "Add Like"
+      }
+    } catch (err) {
+      return err
+    }
+  }
+
 

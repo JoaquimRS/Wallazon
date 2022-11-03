@@ -5,7 +5,10 @@
     <div class="content">
         <div class="header">
             <label class="price">{{product.price}}€</label>
-            <fa-icon [icon]="['far','heart']" class="like"></fa-icon>
+            <div class="likes-container" (click)="productLike(product)">
+                <fa-icon [icon]="[like,'heart']" class="like" [ngClass]="{'liked': like === 'fas'}" ></fa-icon>
+                <label>{{product.likes}}</label>
+            </div>
         </div>
         <p class="title">{{product.title}}</p>
         <p>{{product.description}}</p>

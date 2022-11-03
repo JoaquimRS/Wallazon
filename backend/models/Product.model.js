@@ -39,6 +39,9 @@ const ProductSchema = mongoose.Schema({
       type :String
     }
   },
+  likes: {
+    type: Number
+  },
   creationDate: {
     type: Date,
     default: Date.now(),
@@ -73,6 +76,22 @@ ProductSchema.methods.titleProduct = function () {
   return {
     title: this.title
   }
+}
+
+ProductSchema.methods.toJSON = function () {
+  return {
+    slug: this.slug,
+    title: this.title,
+    category: this.category,
+    price: this.price,
+    condition: this.condition,
+    description: this.description,
+    images: this.images,
+    location: this.location,
+    likes: this.likes,
+    userLike: this.userLike
+  }
+  
 }
 
 module.exports = mongoose.model("Product", ProductSchema);

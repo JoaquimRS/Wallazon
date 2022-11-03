@@ -36,7 +36,7 @@ const UserSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId, 
         ref:"Product"
     }],
-    favorites:[{
+    likes:[{
         type:mongoose.Schema.Types.ObjectId, 
         ref:"Product"
     }]

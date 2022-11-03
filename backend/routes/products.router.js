@@ -1,10 +1,12 @@
 let router = require("express").Router()
 const { products } = require("../controllers/index")
+var {middlewareAuth} = require("../middlewares")
 
-router.get("/",products.getProducts);
-router.get("/filter",products.getFilteredProducts);
-router.get("/skip/:skip",products.getSkipedProducts);
+router.get("/",middlewareAuth.optional,products.getProducts);
+router.get("/filter",middlewareAuth.optional,products.getFilteredProducts);
+router.get("/skip/:skip",middlewareAuth.optional,products.getSkipedProducts);
 router.get("/search/:query",products.getSearchProducts)
+router.get("/like/:idProduct",middlewareAuth.required,products.modLikeProduct)
 router.get("/:idProduct",products.getProduct);
 router.post("/",products.addProduct);
 router.delete("/:idProduct",products.deleteProduct);

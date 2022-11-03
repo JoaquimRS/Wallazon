@@ -36,13 +36,22 @@
 img:hover {
     cursor: pointer;
 }
-.like:hover {
+.likes-container:hover {
     transform: scale(1.2);
     cursor: pointer;
 }
 .title {
     font-weight: 700;
     font-size: 1.3em;
+}
+.likes-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.liked {
+    color: red;
 }
 
 @media (max-width: 750px) {
