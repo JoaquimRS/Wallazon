@@ -76,9 +76,7 @@ export class ShopComponent implements OnInit {
 
   getFilteredProducts() {    
     this._productService.filteredProducts(this.productFilters)
-    .subscribe((filteredProducts)=>{     
-      console.log(filteredProducts);
-       
+    .subscribe((filteredProducts)=>{       
       this.products = filteredProducts.products
       this.numpages = Math.ceil(filteredProducts.numproducts/this.productFilters.limit)
     })

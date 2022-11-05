@@ -105,14 +105,15 @@ UserSchema.methods.toProfile = function (owner) {
             bio: this.bio,
             avatar: this.avatar,
             products: this.products,
-            favorites: this.favorites
+            likes: this.likes
         }
     } else {
         return {
             username: this.username,
             bio: this.bio,
             avatar: this.avatar,
-            products: this.products
+            products: this.products,
+            likes: this.likes
         }
     }
 

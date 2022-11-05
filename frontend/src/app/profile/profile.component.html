@@ -1,0 +1,27 @@
+<main>
+    <input type="checkbox" id="show_menu" class="show-menu">
+    <article>
+        <router-outlet></router-outlet>
+    </article>
+    <aside>
+        <label for="show_menu" class="menu-arrow">
+            <fa-icon [icon]="['fas','arrow-right']" class="arrow-right"></fa-icon>
+            <fa-icon [icon]="['fas','arrow-left']" class="arrow-left"></fa-icon>
+
+        </label>
+        <nav>
+            <ul *ngIf="currentUser.username == userProfile">
+                <li routerLink="profile"><fa-icon [icon]="['fas','user']"></fa-icon><a >Mi Perfil</a></li>
+                <li routerLink="likes"><fa-icon [icon]="['far','heart']"></fa-icon><a >Mis Favoritos</a></li>
+                <li routerLink="products"><fa-icon [icon]="['fas','box']"></fa-icon><a >Mis Productos</a></li>
+                <li (click)="logout()"><fa-icon [icon]="['fas','right-from-bracket']"></fa-icon><a >Logout</a></li>
+            </ul>
+
+            <ul *ngIf="currentUser.username != userProfile">
+                <li routerLink="profile"><fa-icon [icon]="['fas','user']"></fa-icon><a >Perfil</a></li>
+                <li routerLink="products"><fa-icon [icon]="['fas','box']"></fa-icon><a >Productos</a></li>
+            </ul>
+        </nav>
+        
+    </aside>
+</main>

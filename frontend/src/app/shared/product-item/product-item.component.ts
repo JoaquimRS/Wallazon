@@ -27,7 +27,7 @@ export class ProductItemComponent implements OnInit{
   
   productLike(product: Product) {
     if (this.user) {
-      this._productService.modUserLike(product.slug).subscribe((res)=>console.log(res))
+      this._productService.modUserLike(product.slug).subscribe()
       if (this.product.userLike) {
         this.like = "far"
         this.product.userLike = false

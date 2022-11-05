@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, distinctUntilChanged, Observable, ReplaySubject } from 'rxjs';
-import { User } from '../models';
+import { Profile, User } from '../models';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 
@@ -47,6 +47,20 @@ export class UserService {
     this.currentUserSubject.next({} as User)
 
     this.isAuthenticatedSubject.next(false)
+  }
+
+  getUserProfile(userProfile: String | null): Observable<Profile>{    
+    return this._apiService.get('/users/'+userProfile)
+  }
+
+  setUserProfile(userProfile: Profile): Observable<any>{
+    let updatedProfile = this._apiService.post('/users/',userProfile)
+    updatedProfile.subscribe((data)=>{
+      if (data.user) {
+        this.currentUserSubject.next(data.user)       
+      }
+    })
+    return updatedProfile
   }
 
 }

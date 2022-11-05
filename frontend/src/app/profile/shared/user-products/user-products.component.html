@@ -1,0 +1,16 @@
+<section>
+    
+    <header>
+        <h1>Productos {{userProfile.username}}</h1>
+    </header>
+    <main>
+        <div *ngIf="userProfile.products.length > 0">
+            <product-list [products]="userProfile.products"></product-list>
+        </div>
+
+        <div *ngIf="userProfile.products.length == 0">
+            <h1>Todavia no tiene Productos</h1>
+        </div>
+
+    </main>
+</section>

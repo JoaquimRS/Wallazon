@@ -1,3 +1,7 @@
+.content {
+    min-height: calc(100vh - 152px);
+}
+
 @media (max-width: 600px)  {
     .content {
         margin-top: 90px;

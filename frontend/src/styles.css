@@ -21,6 +21,7 @@ body {
 header.nav {
     background-color: #EF7757;
     padding: 1em 0;
+    height: 50px;
     text-align: center;
     margin-bottom: 0;
 }
@@ -80,6 +81,7 @@ header nav li {
     height: 20px;
 }
 footer {
+    height: 70px;
     display: flex;
     align-items: center;
     background-color: #EF7757;

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   async submitLogin(userInfo: userInfo) {    
     this._authService.login(userInfo)
     .subscribe((user)=>{      
-      if (Object.keys(user).length) {
+      if (Object.keys(user).length && !user.msg) {
         this._userService.saveUser(user)
         this.router.navigate(['/'])        
       } else {

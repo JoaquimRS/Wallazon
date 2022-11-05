@@ -20,7 +20,6 @@ export class NoAuthGuard implements CanActivate {
       user.subscribe(data=>data ? null : this.router.navigate(['/']))
       
       return this._userService.isAuthenticated.pipe(take(1),map(auth => !auth))
-    
   }
   
 }
