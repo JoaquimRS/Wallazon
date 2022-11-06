@@ -2,9 +2,6 @@
     cursor: pointer;
 }
 .follow {
-    position: absolute;
-    top: 20%;
-    right: 0;
     font-size: 1.5rem;
     font-weight: 700;
     padding: 10px;
@@ -20,9 +17,6 @@
     background-color: white;
 }
 .unfollow {
-    position: absolute;
-    top: 20%;
-    right: 0;
     font-size: 1.5rem;
     font-weight: 700;
     padding: 10px;

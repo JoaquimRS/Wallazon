@@ -24,14 +24,18 @@ exports.getProfile = async (username,path,auth) => {
     try {
         let data
         switch (path) {
-            case "likes":
-                data = await User.findOne({username:username}).populate("likes")
-                data.likes.map(product => product.userLike = true)
-                break;
             case "profile":
                 data = await User.findOne({username:username})
                 const user = await User.findOne({uuid:auth.id}).populate("following")
                 user.following.map(user => user.uuid == data.uuid ? data.userFollow = true : null)
+                break;
+            case "likes":
+                data = await User.findOne({username:username}).populate("likes")
+                data.likes.map(product => product.userLike = true)
+                break;
+            case "following":
+                data = await User.findOne({username:username}).populate("following")
+                data.following.map(user => user.userFollow = true)
                 break;
             default:
                 data = await User.findOne({username:username})

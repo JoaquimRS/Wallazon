@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core';
 import { SharedModule } from 'src/app/shared';
-import { UserLikesComponent } from './user-likes/user-likes.component';
-import { UserProductsComponent } from './user-products/user-products.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserLikesComponent } from './likes/user-likes.component';
+import { UserProductsComponent } from './products/user-products.component';
+import { UserProfileComponent } from './profile/user-profile.component';
+import { UserFollowingComponent } from './following/user-following.component';
 
 
 
@@ -15,7 +16,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   declarations: [
     UserLikesComponent,
     UserProductsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserFollowingComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -27,7 +29,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   exports: [
     UserLikesComponent,
     UserProductsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserFollowingComponent
   ]
 })
 export class ProfileSharedModule { }

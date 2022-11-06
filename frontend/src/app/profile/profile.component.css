@@ -21,9 +21,13 @@ aside {
     position: relative;
 
 }
+nav {
+    height: 100%;
+}
 nav ul{
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 article {

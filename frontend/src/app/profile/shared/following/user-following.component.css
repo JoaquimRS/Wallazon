@@ -1,0 +1,55 @@
+section {
+    box-sizing: border-box;
+    /* background-color: white; */
+    height: 100%;
+    padding: 20px;
+    overflow: hidden;
+}
+h1 {
+    font-size: 2rem;
+}
+
+main {
+    height: 80%;
+    box-sizing: border-box;
+    background-color: #C6E4F2;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    overflow: auto;
+}
+.following {
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+.container {
+    background-color: #EF7757;
+    padding: 5px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container :is(h1,h3){
+    margin: 0;
+}
+
+.container div {
+    display: flex;
+    gap: 10px;
+}
+.user-info {
+    flex-direction: column;
+    gap: 0 !important;
+    max-width: 20%;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+img {
+    height: 50px;
+}

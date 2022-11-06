@@ -21,7 +21,9 @@
                 <p class="name">{{userProfile.username}}</p>
                 <p>{{userProfile.bio}}</p>
             </div>
-            <follow-button [userProfile]="userProfile" *ngIf="!sameUser"></follow-button>
+            <div class="follow">
+                <follow-button [userProfile]="userProfile" *ngIf="!sameUser"></follow-button>
+            </div>
         </div>
         <div class="user-status">
             <div *ngIf="sameUser">

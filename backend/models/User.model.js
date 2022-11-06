@@ -114,7 +114,8 @@ UserSchema.methods.toProfile = function (owner) {
             products: this.products,
             likes: this.likes,
             followers: this.followers,
-            following: this.following
+            following: this.following,
+            userFollow: this.userFollow
         }
     } else {
         return {
@@ -126,6 +127,17 @@ UserSchema.methods.toProfile = function (owner) {
             following: this.following,
             userFollow: this.userFollow
         }
+    }
+}
+UserSchema.methods.toJSON = function () {
+    return {
+        username: this.username,
+        bio: this.bio,
+        avatar: this.avatar,
+        products: this.products,
+        followers: this.followers,
+        following: this.following,
+        userFollow: this.userFollow
     }
 }
 

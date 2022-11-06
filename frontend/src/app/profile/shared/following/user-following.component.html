@@ -1,0 +1,35 @@
+<section>
+
+    <header>
+        <h1>Seguiendo {{userProfile.username}}</h1>
+    </header>
+    <main>
+        <div *ngIf="userProfile.following" class="following">
+            <div class="container" *ngFor="let user of userProfile.following">
+
+                <img src="/assets/img/user_images/{{user.avatar}}">
+                <div class="user-info">
+                    <h1>{{user.username}}</h1>
+                    <b>{{user.bio}}</b>
+                </div>
+
+                <div>
+                    <h2>Productos</h2>
+                    <h2>{{user.products.length || 0}}</h2>
+                </div>
+                <div>
+                    <h2>Seguidores</h2>
+                    <h2>{{user.followers || 0}}</h2>
+                </div>
+                <div>
+                    <h2>Siguiendo</h2>
+                    <h2>{{user.following?.length || 0}}</h2>
+                </div>
+                <follow-button [userProfile]="user"></follow-button>
+            </div>
+        </div>
+        <div *ngIf="userProfile.following.length == 0">
+            <h1>Todavia no sigue a nadie</h1>
+        </div>
+    </main>
+</section>
