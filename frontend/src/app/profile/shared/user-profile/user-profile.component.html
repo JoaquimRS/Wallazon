@@ -12,15 +12,16 @@
                 </div>
             </div>
             <div class="user-text" *ngIf="sameUser">
-                <p>{{userProfile.username}}</p>
+                <p class="name">{{userProfile.username}}</p>
                 <!-- <input type="text" value="{{userProfile.username}}" class="input"> -->
                 <input type="text" [(ngModel)]="email" (keydown.enter)="updateProfile()" class="input">
                 <textarea class="input" [(ngModel)]="bio" (keydown.enter)="updateProfile()"></textarea>
             </div>
             <div class="user-text" *ngIf="!sameUser">
-                <p>{{userProfile.username}}</p>
+                <p class="name">{{userProfile.username}}</p>
                 <p>{{userProfile.bio}}</p>
             </div>
+            <follow-button [userProfile]="userProfile" *ngIf="!sameUser"></follow-button>
         </div>
         <div class="user-status">
             <div *ngIf="sameUser">

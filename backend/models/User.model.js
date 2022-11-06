@@ -39,6 +39,13 @@ const UserSchema = mongoose.Schema({
     likes:[{
         type:mongoose.Schema.Types.ObjectId, 
         ref:"Product"
+    }],
+    followers:{
+        type:Number
+    },
+    following:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
     }]
 })
 
@@ -105,7 +112,9 @@ UserSchema.methods.toProfile = function (owner) {
             bio: this.bio,
             avatar: this.avatar,
             products: this.products,
-            likes: this.likes
+            likes: this.likes,
+            followers: this.followers,
+            following: this.following
         }
     } else {
         return {
@@ -113,11 +122,11 @@ UserSchema.methods.toProfile = function (owner) {
             bio: this.bio,
             avatar: this.avatar,
             products: this.products,
-            likes: this.likes
+            followers: this.followers,
+            following: this.following,
+            userFollow: this.userFollow
         }
     }
-
-    
 }
 
 module.exports = mongoose.model("User", UserSchema);

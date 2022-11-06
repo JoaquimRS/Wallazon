@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, distinctUntilChanged, Observable, ReplaySubject } from 'rxjs';
 import { Profile, User } from '../models';
@@ -49,8 +50,8 @@ export class UserService {
     this.isAuthenticatedSubject.next(false)
   }
 
-  getUserProfile(userProfile: String | null): Observable<Profile>{    
-    return this._apiService.get('/users/'+userProfile)
+  getUserProfile(userProfile: String | null,path: any): Observable<Profile>{    
+    return this._apiService.get('/users/'+userProfile,new HttpParams({fromObject:path}))
   }
 
   setUserProfile(userProfile: Profile): Observable<any>{
@@ -61,6 +62,10 @@ export class UserService {
       }
     })
     return updatedProfile
+  }
+
+  changeFollow(username: String): Observable<any>{
+    return this._apiService.get('/users/follow/'+username)
   }
 
 }

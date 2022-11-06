@@ -17,8 +17,9 @@ export class ProfileResolver implements Resolve<Observable<Profile>> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Profile> {
-    let userProfile = route.paramMap.get('userProfile')
-    return this._userService.getUserProfile(userProfile)
+    let userProfile = route.parent!.paramMap.get('userProfile')        
+    let path = { path: route.routeConfig!.path}
+    return this._userService.getUserProfile(userProfile,path)
     
   }
 }

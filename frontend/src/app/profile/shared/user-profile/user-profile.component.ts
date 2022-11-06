@@ -17,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   email? : string
   bio : string = ""
   img? : string
+  following : boolean = false
 
   constructor(
     private aRouter : ActivatedRoute,
@@ -25,7 +26,7 @@ export class UserProfileComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.aRouter.parent?.data.subscribe(({userProfile}) => this.userProfile=userProfile)
+    this.aRouter.data.subscribe(({userProfile}) => this.userProfile=userProfile)    
     this.email = this.userProfile.email
     this.bio = this.userProfile.bio
     this._userService.currentUser.subscribe((currentUser)=>{

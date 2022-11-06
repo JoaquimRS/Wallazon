@@ -23,7 +23,7 @@ exports.getUser = async (req, res) => {
 exports.getUserProfile = async (req, res) => {
     let user
     try {
-        user = await userController.getProfile(req.params.username,req.auth)
+        user = await userController.getProfile(req.params.username,req.query.path,req.auth)
     } catch (err) {
         user = err
     }
@@ -34,6 +34,17 @@ exports.setUserProfile = async (req,res ) => {
     let user
     try {
         user = await userController.setProfile(req.body,req.auth)
+    } catch (err) {
+        user = err
+    }
+    res.json(user)
+}
+
+
+exports.changeFollow = async (req, res) => {
+    let user
+    try {
+        user = await userController.modFollow(req.params.username,req.auth)
     } catch (err) {
         user = err
     }

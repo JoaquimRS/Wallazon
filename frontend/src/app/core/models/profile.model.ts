@@ -7,5 +7,6 @@ export interface Profile{
     products: Product[],
     likes: Product[],
     followers: number,
-    following?: Profile[]
+    following?: Profile[],
+    userFollow?: boolean
 }

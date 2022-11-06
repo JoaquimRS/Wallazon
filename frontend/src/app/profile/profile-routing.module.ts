@@ -12,7 +12,6 @@ const routes : Routes = [
   {
     path:':userProfile',
     component: ProfileComponent,
-    resolve: { userProfile : ProfileResolver },
     canActivate: [AuthGuard],
     children:[
       {
@@ -23,17 +22,20 @@ const routes : Routes = [
       {
         path: 'profile',
         component: UserProfileComponent,
+        resolve: { userProfile : ProfileResolver },
         
       },
       {
         path: 'likes',
         component: UserLikesComponent,
+        resolve: { userProfile : ProfileResolver },
         canActivate: [ProfileGuard]
         
       },
       {
         path: 'products',
-        component: UserProductsComponent
+        component: UserProductsComponent,
+        resolve: { userProfile : ProfileResolver },
       },
       
     ]

@@ -15,6 +15,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .user-info {
@@ -22,6 +23,26 @@ main {
     height: 50%;
     display: flex;
     border-bottom: 1px solid black;
+    position: relative;
+}
+
+.follow {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px;
+    border: 3px solid #443C6B;
+    color: #443C6B;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    gap: 10px;
+}
+
+.name {
+    font-size: 2rem;
 }
 
 .user-image {

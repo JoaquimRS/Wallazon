@@ -11,6 +11,7 @@ import { FiltersComponent } from './filters/filters.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { OrderComponent } from './order/order.component';
 import { SearchComponent } from './search/search.component';
+import { FollowButtonComponent } from './follow-button/follow-button.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchComponent } from './search/search.component';
     ProductListComponent,
     FiltersComponent,
     PaginationComponent,
-    OrderComponent
+    OrderComponent,
+    FollowButtonComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { SearchComponent } from './search/search.component';
     ProductListComponent,
     FiltersComponent,
     PaginationComponent,
-    OrderComponent
+    OrderComponent,
+    FollowButtonComponent
   ]
 })
 export class SharedModule { }
