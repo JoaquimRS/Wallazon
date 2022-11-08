@@ -5,12 +5,10 @@
     </header>
     <main>
         <div *ngIf="userProfile.following" class="following">
-            <div class="container" *ngFor="let user of userProfile.following">
-
-                <img src="/assets/img/user_images/{{user.avatar}}">
+            <div class="container" *ngFor="let user of userProfile.following" (click)="toProfile(user.username)">
+                <img src="http://ximo.com:8080/users/img/{{user.avatar}}">
                 <div class="user-info">
                     <h1>{{user.username}}</h1>
-                    <b>{{user.bio}}</b>
                 </div>
 
                 <div>
@@ -23,7 +21,7 @@
                 </div>
                 <div>
                     <h2>Siguiendo</h2>
-                    <h2>{{user.following?.length || 0}}</h2>
+                    <h2>{{user.following.length || 0}}</h2>
                 </div>
                 <follow-button [userProfile]="user"></follow-button>
             </div>

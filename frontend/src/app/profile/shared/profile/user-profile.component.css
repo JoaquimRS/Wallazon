@@ -32,6 +32,32 @@ main {
     right: 0;
 }
 
+.update-user {
+    position: absolute;
+    top: 20%;
+    right: 0;
+}
+
+.update-user *{
+    cursor: pointer;
+}
+.update-user .update {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px;
+    border: 3px solid #443C6B;
+    color: #443C6B;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    gap: 10px;
+    
+}
+.update-user .update:hover {
+    background-color: white;
+}
+
+
 .name {
     font-size: 2rem;
 }
@@ -48,10 +74,16 @@ main {
 .user-image div {
     position: relative;
     height: 80%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+
 }
 .user-image img {
     box-sizing: border-box;
-    height: 100%;
+    height: auto;
+    max-width: 100%;
+    
     /* border: 3px solid black; */
     /* border-radius: 50%; */
 }
@@ -119,3 +151,6 @@ main {
     outline: none;
 }
 
+#avatar {
+    display: none;
+}

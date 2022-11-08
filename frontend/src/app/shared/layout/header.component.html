@@ -13,7 +13,7 @@
                 <li class="nav-list-item"><fa-icon [icon]="['fas','comment-dots']"></fa-icon></li>
                 <li class="nav-list-item"><fa-icon [icon]="['fas','circle-plus']"></fa-icon></li>
                 <li class="nav-list-item" *ngIf="user == false" [routerLink]="['/auth']"><fa-icon [icon]="['fas','user']"></fa-icon></li>
-                <li class="nav-list-item" *ngIf="user == true" [routerLink]="['/profile/'+currentUser.username]"><img class="user-image" src="/assets/img/user_images/{{currentUser.avatar}}"></li>
+                <li class="nav-list-item" *ngIf="user == true" (click)="toProfile()"><img class="user-image" src="http://ximo.com:8080/users/img/{{currentUser.avatar}}"></li>
             </ul>
         </nav>
     </div>

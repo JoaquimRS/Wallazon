@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Profile } from 'src/app/core';
 
 @Component({
@@ -11,10 +11,17 @@ export class UserFollowingComponent implements OnInit {
 
   userProfile!: Profile
 
-  constructor(private aRouter: ActivatedRoute) { }
+  constructor(
+    private aRouter: ActivatedRoute,
+    private router : Router
+    ) { }
 
   ngOnInit(): void {
     this.aRouter.data.subscribe(({userProfile}) => this.userProfile=userProfile)    
   }
+  
+  toProfile(username: string) {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${username}`])})
 
+  }
 }

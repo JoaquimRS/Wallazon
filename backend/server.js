@@ -3,9 +3,12 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const logger = require('morgan')
 require("dotenv").config()
-
 const app = express();
-app.use(logger(':method :url'));
+
+global.__basedir = __dirname;
+
+// app.use(logger(':method :url'));
+app.use(express.urlencoded({ extended: true }));
 
 const { db } = require('./config/')
 const hostname = process.env.HOSTNAME;

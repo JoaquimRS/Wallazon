@@ -4,6 +4,7 @@ import * as CryptoJS from 'crypto-js';
 
 import { userInfo, AuthService, UserService } from '../core';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 
@@ -24,7 +25,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _authService: AuthService,
-    private _userService: UserService
+    private _userService: UserService,
+    private router: Router
   ) { 
     this.registerForm = this.fb.group({
       user: ['',Validators.required],
@@ -58,11 +60,12 @@ export class RegisterComponent implements OnInit {
 
   async submitRegister(userInfo: userInfo) {
     this._authService.register(userInfo)
-    .subscribe((user)=>{
+    .subscribe((user)=>{      
       if (user.hasOwnProperty("errors")) {
         this.user_error = "*Usuario o email no disponibles"
       } else {
         this._userService.saveUser(user)
+        this.router.navigate(['/'])      
       }
     })
   }

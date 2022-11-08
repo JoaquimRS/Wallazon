@@ -50,7 +50,16 @@ exports.getProfile = async (username,path,auth) => {
 exports.setProfile = async (userInfo,auth) => {
     try {
         const data = await User.findOneAndUpdate({uuid:auth.id},{$set:{email:userInfo.email,bio:userInfo.bio,avatar:userInfo.avatar}})    
-        return {msg: "User updated correctyl", user: data.toAuthJSON()}
+        return {msg: "User updated correctyl", user: data.toProfile(true)}
+    } catch (err) {
+        return err
+    }
+}
+
+exports.setUserImage = async (filename,auth) =>{
+    try {
+        const data = await User.findOneAndUpdate({uuid:auth.id},{$set:{avatar:filename}})
+        return data
     } catch (err) {
         return err
     }
@@ -68,9 +77,8 @@ exports.modFollow = async (username,auth) => {
         if (following) {
             await User.findOneAndUpdate({uuid:auth.id},{$pull:{"following":userFollow._id}})
             await User.findOneAndUpdate({username},{$inc:{"followers":-1}})
-            return flase
+            return false
         } else {
-            console.log(userFollow._id);
             await User.findOneAndUpdate({uuid:auth.id},{$push:{"following":userFollow._id}})
             await User.findOneAndUpdate({username},{$inc:{"followers":1}})
             return true

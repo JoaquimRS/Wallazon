@@ -9,6 +9,9 @@ export class HttpTokenInterceptor implements HttpInterceptor {
   constructor(private jwtService: JwtService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {    
+    if (req.headers.get("skip"))
+        return next.handle(req);
+
     const headersConfig = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

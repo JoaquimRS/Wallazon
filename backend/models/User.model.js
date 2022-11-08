@@ -56,7 +56,7 @@ UserSchema.pre("validate", async function (next) {
         this.uuidGenerate()
     }
     if (this.avatar) {
-        this.avatar = this.username + "_" + this.avatar
+        this.avatar = this.username + ".png"
     }
     this.password = await this.hashPassword()
     next()

@@ -22,7 +22,7 @@ main {
 .following {
     display: flex;
     flex-direction: column;
-    gap: 15px
+    gap: 15px;
 }
 .container {
     background-color: #EF7757;
@@ -31,6 +31,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    cursor: pointer;
 }
 
 .container :is(h1,h3){

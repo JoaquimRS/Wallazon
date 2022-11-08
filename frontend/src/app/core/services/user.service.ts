@@ -9,7 +9,6 @@ import { JwtService } from './jwt.service';
   providedIn: 'root'
 })
 export class UserService {
-
   private currentUserSubject = new BehaviorSubject<User>({} as User)
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged())
 
@@ -54,8 +53,8 @@ export class UserService {
     return this._apiService.get('/users/'+userProfile,new HttpParams({fromObject:path}))
   }
 
-  setUserProfile(userProfile: Profile): Observable<any>{
-    let updatedProfile = this._apiService.post('/users/',userProfile)
+  setUserProfile(updateProfile: Profile): Observable<any>{
+    let updatedProfile = this._apiService.post('/users/',updateProfile)
     updatedProfile.subscribe((data)=>{
       if (data.user) {
         this.currentUserSubject.next(data.user)       
@@ -68,4 +67,12 @@ export class UserService {
     return this._apiService.get('/users/follow/'+username)
   }
 
+  updateUserImage(file: FileList):Observable<any>{
+    let newFile:any = file.item(0)
+    let token = this._jwtService.getToken
+    const formData: FormData = new FormData()
+    formData.append('file',newFile)    
+
+    return this._apiService.postFormData('/users/img/',formData)
+  }
 }

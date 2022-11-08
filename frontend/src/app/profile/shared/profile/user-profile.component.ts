@@ -11,13 +11,12 @@ import { FormControl } from '@angular/forms';
 export class UserProfileComponent implements OnInit {
 
   userProfile!: Profile
-  
   currentUser! : User
   sameUser!: boolean
   email? : string
   bio : string = ""
+  avatar: string = ""
   img? : string
-  following : boolean = false
 
   constructor(
     private aRouter : ActivatedRoute,
@@ -29,22 +28,30 @@ export class UserProfileComponent implements OnInit {
     this.aRouter.data.subscribe(({userProfile}) => this.userProfile=userProfile)    
     this.email = this.userProfile.email
     this.bio = this.userProfile.bio
+    this.avatar = this.userProfile.avatar
     this._userService.currentUser.subscribe((currentUser)=>{
       this.currentUser = currentUser
       this.sameUser = this.userProfile.username == this.currentUser.username
     })
   }
 
-  updateProfile() {
+  updateProfile() {    
     this.userProfile.email = this.email
     this.userProfile.bio = this.bio
-    // this.userProfile.avatar = "Ximo_Ximo.png"
+    this.userProfile.avatar = this.avatar
     
     this._userService.setUserProfile(this.userProfile)
     .subscribe((data)=>{
-
+      this.userProfile = data.user
     })
-    
+  }
+
+  selectFile(event: any): void {
+    this._userService.updateUserImage(event.target.files)
+    .subscribe(data => {
+      this.avatar = data
+      this.updateProfile()
+    })    
   }
 
 }

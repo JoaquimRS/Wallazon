@@ -8,6 +8,7 @@ import { UserLikesComponent } from './likes/user-likes.component';
 import { UserProductsComponent } from './products/user-products.component';
 import { UserProfileComponent } from './profile/user-profile.component';
 import { UserFollowingComponent } from './following/user-following.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -24,7 +25,8 @@ import { UserFollowingComponent } from './following/user-following.component';
     CoreModule,
     SharedModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     UserLikesComponent,

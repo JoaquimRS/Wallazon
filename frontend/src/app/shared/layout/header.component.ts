@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User, UserService } from 'src/app/core';
 
 @Component({
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
   currentUser!: User
 
   constructor(
-    private _userService : UserService
+    private _userService : UserService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -25,5 +27,10 @@ export class HeaderComponent implements OnInit {
         this.currentUser = currentUser
     })
   }
+
+  toProfile() {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}`])})
+  }
+
 
 }

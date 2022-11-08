@@ -7,15 +7,15 @@
         <div class="user-info">
             <div class="user-image">
                 <div>
-                    <img src="/assets/img/user_images/{{userProfile.avatar}}">
-                    <fa-icon [icon]="['fas','edit']" *ngIf="sameUser"></fa-icon>
+                    <img src="http://ximo.com:8080/users/img/{{avatar}}">
+                    <label for="avatar"><fa-icon [icon]="['fas','edit']" *ngIf="sameUser"></fa-icon></label>
+                    <input type="file" id="avatar" (change)="selectFile($event)" accept="image/*"/>
                 </div>
             </div>
             <div class="user-text" *ngIf="sameUser">
                 <p class="name">{{userProfile.username}}</p>
-                <!-- <input type="text" value="{{userProfile.username}}" class="input"> -->
-                <input type="text" [(ngModel)]="email" (keydown.enter)="updateProfile()" class="input">
-                <textarea class="input" [(ngModel)]="bio" (keydown.enter)="updateProfile()"></textarea>
+                <input type="text" [(ngModel)]="email" class="input" placeholder="Email">
+                <textarea class="input" [(ngModel)]="bio" placeholder="Descripcion"></textarea>
             </div>
             <div class="user-text" *ngIf="!sameUser">
                 <p class="name">{{userProfile.username}}</p>
@@ -23,6 +23,12 @@
             </div>
             <div class="follow">
                 <follow-button [userProfile]="userProfile" *ngIf="!sameUser"></follow-button>
+            </div>
+            <div class="update-user" *ngIf="sameUser" (click)="updateProfile()">
+                <div class="update">
+                    <fa-icon [icon]="['fas','gear']"></fa-icon>
+                    <label>Aplicar Cambios</label>
+                </div>
             </div>
         </div>
         <div class="user-status">
@@ -40,7 +46,7 @@
             </div>
             <div>
                 <h3>Siguiendo</h3>
-                <h1>{{userProfile.following?.length || 0}}</h1>
+                <h1>{{userProfile.following.length || 0}}</h1>
             </div>
         </div>
     </main>
