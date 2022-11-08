@@ -34,4 +34,8 @@ export class ProductsService {
   modUserLike(slug: string): Observable<any>{
     return this._apiService.get('/products/like/'+slug)
   }
+
+  detailsProduct(slug: any): Observable<Product>{    
+    return this._apiService.get('/products/'+slug)
+  }
 }

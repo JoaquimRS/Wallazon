@@ -7,7 +7,7 @@ const app = express();
 
 global.__basedir = __dirname;
 
-// app.use(logger(':method :url'));
+app.use(logger(':method :url'));
 app.use(express.urlencoded({ extended: true }));
 
 const { db } = require('./config/')

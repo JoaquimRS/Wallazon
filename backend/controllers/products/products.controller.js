@@ -1,4 +1,4 @@
-const { Product, User } = require("../../models/index");
+const { Product, User, Category } = require("../../models/index");
 
   exports.findAll = async (auth) => {
     try {
@@ -87,7 +87,9 @@ const { Product, User } = require("../../models/index");
   exports.findOne = async (idProduct) => {
     try {
       const data = await Product.findOne({slug:idProduct});
-      return data;
+      const category = await Category.findOne({slug:data.category},{title:1})
+      data.category = category.title
+      return data.toJSON();
     } catch (err) {
       return err;
     }

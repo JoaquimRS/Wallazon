@@ -1,0 +1,7 @@
+main {
+    margin: 0px auto;
+    width:100%;
+    height: calc(100vh - 152px);
+    display: flex;
+    flex-direction: column;
+}
