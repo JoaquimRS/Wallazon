@@ -37,6 +37,9 @@ exports.getProfile = async (username,path,auth) => {
                 data = await User.findOne({username:username}).populate("following")
                 data.following.map(user => user.userFollow = true)
                 break;
+            case "products":
+                data = await User.findOne({username:username}).populate("products")
+                break
             default:
                 data = await User.findOne({username:username})
                 break;

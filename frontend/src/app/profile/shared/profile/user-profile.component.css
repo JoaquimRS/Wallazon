@@ -81,7 +81,7 @@ main {
 }
 .user-image img {
     box-sizing: border-box;
-    height: auto;
+    height: 100%;
     max-width: 100%;
     
     /* border: 3px solid black; */

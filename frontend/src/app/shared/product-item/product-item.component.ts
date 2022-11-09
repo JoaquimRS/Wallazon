@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product, ProductsService, User, UserService } from 'src/app/core';
-import { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
-import { Router } from '@angular/router';
+import { Product } from 'src/app/core';
+
 
 @Component({
   selector: 'product-item',
@@ -9,40 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit{
-  constructor (
-    private _userService: UserService,
-    private _productService: ProductsService,
-    private router: Router
-    ) {}
-  user!: boolean
-  like: IconPrefix = "far"
-  ngOnInit(): void {
-    this._userService.isAuthenticated.subscribe((user)=>{
-      this.user = user
-    })
-    this.product.userLike ? this.like = "fas" : this.like = "far"
-    
-  }
+  constructor () {}
+  
+  ngOnInit(): void {}
   @Input() product!: Product  
   
-  productLike(product: Product) {
-    if (this.user) {
-      this._productService.modUserLike(product.slug).subscribe()
-      if (this.product.userLike) {
-        this.like = "far"
-        this.product.userLike = false
-        this.product.likes += -1
-      } else {
-        this.like = "fas"
-        this.product.userLike = true
-        this.product.likes += 1
-      }
-
-
-    } else {
-      this.router.navigate(['/auth/login'])
-    }
-
-    
-  }
 }

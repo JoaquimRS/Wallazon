@@ -84,11 +84,16 @@ const { Product, User, Category } = require("../../models/index");
     }
   }
 
-  exports.findOne = async (idProduct) => {
+  exports.findOne = async (idProduct,auth) => {
     try {
-      const data = await Product.findOne({slug:idProduct});
+      const data = await Product.findOne({slug:idProduct}).populate("owner")
       const category = await Category.findOne({slug:data.category},{title:1})
       data.category = category.title
+      if (auth) {
+        const user = await User.findOne({uuid:auth.id},{likes:1,_id:0}).populate("likes")  
+        user.likes.map(product => product.slug == idProduct ? data.userLike=true : null)
+        // data.map(product => user.likes.map(likeProduct => product.slug == likeProduct.slug ? product.userLike = true : null))
+      }
       return data.toJSON();
     } catch (err) {
       return err;

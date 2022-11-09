@@ -1,0 +1,4 @@
+<div class="likes-container" (click)="productLike(product)">
+    <fa-icon [icon]="[like,'heart']" class="like" [ngClass]="{'liked': like === 'fas'}" ></fa-icon>
+    <label>{{product.likes}}</label>
+</div>

@@ -12,6 +12,8 @@ export class DetailsComponent implements OnInit {
   product!: Product
   constructor(private aRouter: ActivatedRoute) { 
     this.aRouter.data.subscribe(({product}) => this.product = product)
+    console.log(this.product);
+    
   }
   
   ngOnInit(): void { }

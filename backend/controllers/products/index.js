@@ -43,7 +43,7 @@ exports.getSearchProducts = async (req,res) =>{
 exports.getProduct = async (req,res) => {
     let product
     try {
-        product = await productController.findOne(req.params.idProduct)
+        product = await productController.findOne(req.params.idProduct,req.auth)
     } catch (error) {
         product = error
     }

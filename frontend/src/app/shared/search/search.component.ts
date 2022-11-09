@@ -37,7 +37,8 @@ export class SearchComponent {
   
   submitSearch() {    
     this.searchFilters.search = this.search
-    this.router.navigate(['/shop',btoa(JSON.stringify(this.searchFilters))]) 
+    this.router.navigateByUrl('/shop',{skipLocationChange: true}).then(()=>{this.router.navigate(['/shop',btoa(JSON.stringify(this.searchFilters))])})
+     
   }
 
 }

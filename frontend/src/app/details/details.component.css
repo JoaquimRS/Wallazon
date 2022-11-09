@@ -4,4 +4,134 @@ main {
     height: calc(100vh - 152px);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1,h2,h3,h4,p {
+    margin: 0;
+}
+.container {
+    width: 60%;
+    height: 90%;
+    /* background-color: red; */
+}
+
+.product {
+    background-color: #EF7757;
+    padding: 5px;
+    border-radius: 20px;
+    height: 60%;
+    display: flex;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+
+.images {
+    box-sizing: border-box;
+    width: 40%;
+    height: 100%;
+    display: flex;
+}
+
+.main-image img {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.main-image {
+    width: 70%;
+    padding: 5px;
+}
+.second-images {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.second-images div {
+    box-sizing: border-box;
+    height: 33%;
+    padding: 5px;
+}
+.second-images img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-info {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: space-around;
+}
+
+
+.product-info .header {
+    position: relative;
+    display: flex;
+    height: 10%;
+    gap: 10px;
+}
+
+.product-info .header img {
+    height: 100%;
+}
+.product-info .user {
+    width: 15%;
+    cursor: pointer;
+    background-color: #C6E4F2;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+
+.product-info .header like-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.product .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.price {
+    width: 48%;
+}
+
+.condition {
+    width: 48%;
+}
+
+.description {
+    width: 100%;
+}
+
+.product .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+iframe{
+    box-sizing: border-box;
+    width: 100%;
+    height: 90%;
+    border: 0px;
+    border-radius: 15px;
 }

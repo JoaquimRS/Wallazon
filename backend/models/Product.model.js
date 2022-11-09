@@ -50,6 +50,10 @@ const ProductSchema = mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  owner: {
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User"
+  }
 
 });
 
@@ -89,7 +93,8 @@ ProductSchema.methods.toJSON = function () {
     images: this.images,
     location: this.location,
     likes: this.likes,
-    userLike: this.userLike
+    userLike: this.userLike,
+    owner: this.owner
   }
   
 }

@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export interface Product {
     slug:string;
     title:string;
@@ -13,6 +15,6 @@ export interface Product {
     };
     likes:number;
     userLike:boolean;
-
+    owner: User;
 
 }

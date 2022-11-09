@@ -1,4 +1,50 @@
 <main>
-    <h1>{{product.title}}</h1>
-    <h3>{{product.category}}</h3>
+    <div class="container">
+        <div class="product">
+            <div class="images">
+                <div class="second-images">
+                    <div><img src="/assets/img/products_images/{{product.images[0]}}"></div>
+                    <div><img src="/assets/img/products_images/{{product.images[0]}}"></div>
+                    <div><img src="/assets/img/products_images/{{product.images[0]}}"></div>
+                </div>
+                <div class="main-image">
+                    <img src="/assets/img/products_images/{{product.images[0]}}">
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="header">
+                    <div [routerLink]="['/profile/'+product.owner.username]" class="user">
+                        <img src="http://ximo.com:8080/users/img/{{product.owner.avatar}}">
+                        <h3>{{product.owner.username}}</h3>
+                    </div>
+                    <div>
+                        <h3>{{product.category}}</h3>
+                        <h1>{{product.title}}</h1>
+                    </div>
+                    <like-button [product]="product"></like-button>
+                </div>
+                <div class="main">
+                    <div class="price">
+                        <h3 class="title-text">Precio</h3>
+                        <h1>{{product.price}}€</h1>
+                    </div>
+                    <div class="condition">
+                        <h3 class="title-text">Condicion</h3>
+                        <h2>{{product.condition}}</h2>
+                    </div>
+                    <div class="description">
+                        <h3 class="title-text">Descripcion</h3>
+                        <p>{{product.description}}</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <label><fa-icon [icon]="['fas','location-dot']"></fa-icon> {{product.location.city}}</label>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2329.994716881141!2d-0.7853947172538512!3d38.782727165426095!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61650442df3b59%3A0xfaad52a51b30afe5!2s46635%20Fontanares%2C%20Valencia!5e0!3m2!1ses!2ses!4v1667995110466!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            
+        </div>
+    </div>
 </main>
