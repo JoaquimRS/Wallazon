@@ -125,12 +125,14 @@ main {
 .user-status h3 {
     font-weight: 900;
     font-size: 2rem;
+
 }
 
 
 .user-status h1 {
     font-weight: 900;
     font-size: 4rem;
+    margin: 0;
 }
 
 .input {

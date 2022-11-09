@@ -1,0 +1,82 @@
+<div class="comments">
+
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit iste voluptas accusamus, impedit quidem aut, omnis voluptatem distinctio dolorem facere, ea rem aliquam neque facilis assumenda corrupti eius qui harum?</p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+        </div>
+        <div class="body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="new-comment" (click)="addComment()" *ngIf="!newComment">
+        <div>
+            <fa-icon [icon]="['fas','circle-plus']"></fa-icon>
+        </div>
+    </div>
+    <div class="comment" *ngIf="newComment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/Ximo_block_n_load.png">
+            <h2>Ximo</h2>
+            <div class="save-comment" (click)="saveComment()"><fa-icon [icon]="['fas','paper-plane']"></fa-icon></div>
+        </div>
+        <div class="body">
+            <textarea [(ngModel)]="comment" class="input" placeholder="Comentario"></textarea>
+        </div>
+    </div>
+
+</div>
