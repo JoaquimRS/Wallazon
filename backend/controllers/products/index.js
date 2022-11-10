@@ -81,6 +81,16 @@ exports.updateProduct = async (req,res) => {
     res.json(product)
 } 
 
+exports.modProduct = async (req,res) => {
+    let product
+    try {
+        product = await productController.modOne(req.body, req.auth)
+    } catch (error) {
+        product = error
+    } 
+    res.json(product)
+}
+
 exports.modLikeProduct = async (req,res) => {
     let product
     try {

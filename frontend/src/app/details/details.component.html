@@ -23,7 +23,30 @@
                     </div>
                     <like-button [product]="product"></like-button>
                 </div>
-                <div class="main">
+                <div class="main" *ngIf="sameUser">
+                    <div class="price">
+                        <h3 class="title-text">Precio</h3>
+                        <input type="number" class="input" [(ngModel)]="price">
+                    </div>
+                    <div class="condition">
+                        <h3 class="title-text">Condicion</h3>
+                        <select class="input" [(ngModel)]="condition">
+                            <option *ngFor="let condition of conditions" [value]="condition">{{condition}}</option>
+                        </select>
+                    </div>
+                    <div class="description">
+                        <h3 class="title-text">Descripcion</h3>
+                        <textarea class="input" [(ngModel)]="description"></textarea>
+                        
+                    </div>
+                    <div class="update-user">
+                        <div class="update" (click)="applyChanges()">
+                            <fa-icon [icon]="['fas','gear']"></fa-icon>
+                            <label>Aplicar Cambios</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="main" *ngIf="!sameUser">
                     <div class="price">
                         <h3 class="title-text">Precio</h3>
                         <h1>{{product.price}}€</h1>

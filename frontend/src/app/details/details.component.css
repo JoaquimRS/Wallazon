@@ -71,9 +71,10 @@ h1,h2,h3,h4,p {
     width: 70%;
     height: 100%;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     padding: 5px;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 
@@ -112,6 +113,7 @@ h1,h2,h3,h4,p {
     justify-content: space-between;
     gap: 10px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .price {
@@ -128,6 +130,7 @@ h1,h2,h3,h4,p {
 
 .product .footer {
     display: flex;
+    height:50%;
     flex-direction: column;
     gap: 10px;
 }
@@ -148,4 +151,57 @@ iframe{
     border-radius: 20px;
     /* padding: 10px; */
     overflow: auto;
+}
+
+.update-user {
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+.update-user *{
+    cursor: pointer;
+}
+
+.update-user .update {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 10px;
+    border: 3px solid #443C6B;
+    color: #443C6B;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    gap: 10px;
+    
+}
+.update-user .update:hover {
+    background-color: white;
+}
+
+.input {
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 900;
+    background-color: transparent;
+    outline: none;
+    font-size: 2rem;    
+}
+select.input {
+    font-size: 1.5rem;
+}
+
+textarea.input {
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

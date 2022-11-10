@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="new-comment" (click)="newComment = true" *ngIf="!newComment">
+    <div class="new-comment" (click)="addComment()" *ngIf="!newComment">
         <div>
             <fa-icon [icon]="['fas','circle-plus']"></fa-icon>
         </div>

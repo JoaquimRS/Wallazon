@@ -19,7 +19,7 @@ main {
 }
 
 .user-info {
-    width: 80%;
+    width: 90%;
     height: 50%;
     display: flex;
     border-bottom: 1px solid black;
@@ -68,8 +68,8 @@ main {
     height: 100%;
     padding: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: right;
 }
 .user-image div {
     position: relative;
@@ -139,7 +139,6 @@ main {
     box-sizing: border-box;
     border: none;
     width: 100%;
-
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 900;
     background-color: transparent;
@@ -152,6 +151,7 @@ main {
     border-bottom: solid 1px black;
     outline: none;
 }
+
 
 #avatar {
     display: none;

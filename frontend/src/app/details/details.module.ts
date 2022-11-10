@@ -5,6 +5,7 @@ import { SharedModule } from '../shared';
 import { CoreModule } from '../core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DetailsComponent } from './details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,7 @@ import { DetailsComponent } from './details.component';
   declarations: [DetailsComponent],
   imports: [
     CommonModule,
+    FormsModule,
     DetailsRoutingModule,
     SharedModule,
     CoreModule,

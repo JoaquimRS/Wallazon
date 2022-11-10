@@ -126,6 +126,19 @@ const { Product, User, Category } = require("../../models/index");
         return err;
     }
   }
+  exports.modOne = async (productInfo,auth) => {
+    try {
+      let data
+      if (productInfo.owner.username == auth.username) {
+        data = await Product.findOneAndUpdate({slug:productInfo.slug},{$set:{price:productInfo.price,condition:productInfo.condition,description:productInfo.description}})
+      } else {
+        data = "No pudes hacer eso"
+      }
+      return { msg: "Product updated correctly", data: data};
+    } catch (err) {
+        return err;
+    }
+  }
   exports.modLike = async (slug,auth) => {
     try {
       let hasLike = false

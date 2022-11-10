@@ -35,6 +35,10 @@ export class ProductsService {
     return this._apiService.get('/products/like/'+slug)
   }
 
+  modUser(productInfo: Product): Observable<any>{
+    return this._apiService.post('/products/mod',productInfo)
+  }
+
   detailsProduct(slug: any): Observable<Product>{    
     return this._apiService.get('/products/'+slug)
   }

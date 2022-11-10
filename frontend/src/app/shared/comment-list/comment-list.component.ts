@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Route, Router } from '@angular/router';
 import { Comment, CommentsService, Product, User, UserService } from 'src/app/core';
 
 @Component({
@@ -20,13 +20,19 @@ export class CommentListComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _commentService: CommentsService,
+    private router : Router
   ) {
-    // this.product = this.aRouterSnap.paramMap.get('slugProduct')
   }
 
   ngOnInit(): void {    
     this._userService.currentUser.subscribe(data => this.currentUser = data)
     
+  }
+
+  addComment() {
+    this._userService.isAuthenticated.subscribe(data => 
+      data ? this.newComment = true : this.router.navigate(['/auth/login'])
+    )
   }
 
   saveComment() {        

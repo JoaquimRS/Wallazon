@@ -9,6 +9,7 @@ router.get("/search/:query",products.getSearchProducts)
 router.get("/like/:idProduct",middlewareAuth.required,products.modLikeProduct)
 router.get("/:idProduct",middlewareAuth.optional,products.getProduct);
 router.post("/",products.addProduct);
+router.post("/mod",middlewareAuth.required,products.modProduct)
 router.delete("/:idProduct",products.deleteProduct);
 router.put("/:idProduct",products.updateProduct);
 
