@@ -8,5 +8,6 @@ router.use("/products", require("./products.router"))
 router.use("/categories", require("./categories.router"))
 router.use("/auth",require("./auth.router"))
 router.use("/users",require("./user.router"))
+router.use("/comments",require("./comments.router"))
 
 module.exports = router

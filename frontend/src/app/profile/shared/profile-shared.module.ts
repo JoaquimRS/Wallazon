@@ -9,6 +9,7 @@ import { UserProductsComponent } from './products/user-products.component';
 import { UserProfileComponent } from './profile/user-profile.component';
 import { UserFollowingComponent } from './following/user-following.component';
 import { RouterModule } from '@angular/router';
+import { UserCommentsComponent } from './comments/user-comments.component';
 
 
 
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     UserLikesComponent,
     UserProductsComponent,
     UserProfileComponent,
-    UserFollowingComponent
+    UserFollowingComponent,
+    UserCommentsComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -32,7 +34,8 @@ import { RouterModule } from '@angular/router';
     UserLikesComponent,
     UserProductsComponent,
     UserProfileComponent,
-    UserFollowingComponent
+    UserFollowingComponent,
+    UserCommentsComponent
   ]
 })
 export class ProfileSharedModule { }

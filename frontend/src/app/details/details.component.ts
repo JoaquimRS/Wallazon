@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../core';
+import { Comment, CommentsService, Product } from '../core';
 
 @Component({
   selector: 'app-details',
@@ -10,12 +10,16 @@ import { Product } from '../core';
 export class DetailsComponent implements OnInit {
   
   product!: Product
-  constructor(private aRouter: ActivatedRoute) { 
+  comments!: Comment[]
+  constructor(
+    private aRouter: ActivatedRoute,
+    private _commentsService: CommentsService
+    ) { 
     this.aRouter.data.subscribe(({product}) => this.product = product)
-    console.log(this.product);
-    
+    this._commentsService.getProduct(this.product.slug).subscribe(data=> this.comments = data)    
   }
   
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+  }
 
 }

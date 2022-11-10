@@ -40,10 +40,13 @@ h1,h2,h3,h4,p {
     box-sizing: border-box;
     margin-top: 5px;
     font-size: 1.2rem;
+    padding: 5px;
 }
 .body p {
-    max-height: 70px;
-    overflow: hidden;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-overflow: ellipsis;   
 }
 
 .new-comment {
@@ -51,8 +54,9 @@ h1,h2,h3,h4,p {
     border-radius: 15px;
     box-sizing: border-box;
     margin: 5px;
-    width: 45%;
-    height: 12vh;
+    width: 49%;
+    min-height: 7vh;
+    max-height: 12vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +72,13 @@ h1,h2,h3,h4,p {
     font-family: 'Josefin Sans', sans-serif;
     background-color: transparent;
     outline: none;
+}
+
+textarea::placeholder {
+    color: darkgray;
+}
+span {
+    color: red;
 }
 
 

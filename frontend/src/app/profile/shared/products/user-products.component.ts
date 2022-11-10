@@ -15,9 +15,7 @@ export class UserProductsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.aRouter.data.subscribe(({userProfile}) => this.userProfile=userProfile)
-    console.log(this.userProfile);
-    
+    this.aRouter.data.subscribe(({userProfile}) => this.userProfile=userProfile)    
   }
 
 }

@@ -13,7 +13,7 @@ import { OrderComponent } from './order/order.component';
 import { SearchComponent } from './search/search.component';
 import { FollowButtonComponent } from './follow-button/follow-button.component';
 import { LikeButtonComponent } from './like-button/like-button.component';
-import { CommentsListComponent } from './comments-list/comments-list.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { CommentsListComponent } from './comments-list/comments-list.component';
     OrderComponent,
     FollowButtonComponent,
     LikeButtonComponent,
-    CommentsListComponent
+    CommentListComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +43,7 @@ import { CommentsListComponent } from './comments-list/comments-list.component';
     OrderComponent,
     FollowButtonComponent,
     LikeButtonComponent,
-    CommentsListComponent
+    CommentListComponent
   ]
 })
 export class SharedModule { }
