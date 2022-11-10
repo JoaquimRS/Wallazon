@@ -26,7 +26,7 @@ exports.getProfile = async (username,path,auth) => {
         switch (path) {
             case "profile":
                 data = await User.findOne({username:username})
-                const user = await User.findOne({uuid:auth.id}).populate("following")
+                var user = await User.findOne({uuid:auth.id}).populate("following")
                 user.following.map(user => user.uuid == data.uuid ? data.userFollow = true : null)
                 break;
             case "likes":
@@ -39,6 +39,8 @@ exports.getProfile = async (username,path,auth) => {
                 break;
             case "products":
                 data = await User.findOne({username:username}).populate("products")
+                var user = await User.findOne({uuid:auth.id},{likes:1,_id:0}).populate("likes")  
+                data.products.map(product => user.likes.map(likeProduct => product.slug == likeProduct.slug ? product.userLike = true : null))
                 break
             default:
                 data = await User.findOne({username:username})

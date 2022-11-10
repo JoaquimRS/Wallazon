@@ -1,4 +1,4 @@
-const { Category } = require("../../models/index")
+const { Category, User } = require("../../models/index")
 
 exports.findAll = async () => {
     try {
@@ -9,9 +9,14 @@ exports.findAll = async () => {
     }
   };
 
-  exports.findOne = async (idCategory) => {
+  exports.findOne = async (idCategory,auth) => {
     try {
-      const data = await Category.findOne({slug:idCategory}).populate("products")
+      const data = await Category.findOne({slug:idCategory}).populate("products") 
+      if (auth) {
+        const user = await User.findOne({uuid:auth.id},{likes:1,_id:0}).populate("likes")  
+        data.products.map(product => user.likes.map(likeProduct => product.slug == likeProduct.slug ? product.userLike = true : null))
+      }
+      console.log(data);
       return data;
     } catch (err) {
       return err;

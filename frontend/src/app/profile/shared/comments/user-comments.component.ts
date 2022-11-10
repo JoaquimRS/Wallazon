@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Comment, CommentsService, Profile } from 'src/app/core';
 
 @Component({
   selector: 'app-user-comments',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCommentsComponent implements OnInit {
 
-  constructor() { }
+  comments!: Comment[]
+  userProfile!: Profile
+
+  constructor(
+    private _commentService: CommentsService,
+    private aRouter: ActivatedRoute
+  ) { 
+    this._commentService.getUser().subscribe(data=>this.comments = data)
+    this.aRouter.data.subscribe(({userProfile}) => this.userProfile=userProfile)
+  }
 
   ngOnInit(): void {
+    
   }
 
 }

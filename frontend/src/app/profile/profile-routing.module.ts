@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard, ProfileGuard } from '../core';
 import { ProfileComponent } from './profile.component';
 import { ProfileResolver } from './profile.resolver';
+import { UserCommentsComponent } from './shared/comments/user-comments.component';
 import { UserFollowingComponent } from './shared/following/user-following.component';
 import { UserLikesComponent } from './shared/likes/user-likes.component';
 import { UserProductsComponent } from './shared/products/user-products.component';
@@ -42,6 +43,12 @@ const routes : Routes = [
         path: 'following',
         component: UserFollowingComponent,
         resolve: { userProfile : ProfileResolver },
+        canActivate: [ProfileGuard]
+      },
+      {
+        path: 'comments',
+        component: UserCommentsComponent,
+        resolve: { userProfile: ProfileResolver},
         canActivate: [ProfileGuard]
       }
       

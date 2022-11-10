@@ -18,12 +18,37 @@ h1,h2,h3,h4,p {
     padding: 5px;
 }
 
+.user-comment {
+    background-color: #EF7757;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin: 5px;
+    width: 49%;
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
 .user-info {
     display: flex;
     align-items: center;
     gap: 10px;
     position: relative;
+    cursor: pointer;
 }
+
+.product-info {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+    
+}
+.product-info img {
+    border-radius: 15px;
+    height: 100px;
+}
+
 .user-info img{
     height: 30px;
     width: auto;
@@ -34,6 +59,11 @@ h1,h2,h3,h4,p {
     right: 10px;
     font-size: 1.4rem;
     cursor: pointer;
+}
+
+.product-body {
+    font-size: 1.2rem;
+    text-align: start;
 }
 
 .body {

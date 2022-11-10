@@ -13,7 +13,7 @@ exports.getCategories = async (req,res) => {
 exports.getCategory = async (req,res) => {
     let category
     try {
-        category = await categoryController.findOne(req.params.idCategory)
+        category = await categoryController.findOne(req.params.idCategory,req.auth)
     } catch (error) {
         category = error
     }

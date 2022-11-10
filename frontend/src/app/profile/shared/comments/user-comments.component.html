@@ -1,1 +1,16 @@
-<p>user-comments works!</p>
+<section>
+    
+    <header>
+        <h1>Commentarios {{userProfile.username}}</h1>
+    </header>
+    <main>
+        <div *ngIf="comments.length > 0">
+            <comment-list [index]="'user'" [comments]="comments"></comment-list>
+        </div>
+
+        <div *ngIf="comments.length == 0">
+            <h1>Todavia no tiene Comentarios</h1>
+        </div>
+
+    </main>
+</section>

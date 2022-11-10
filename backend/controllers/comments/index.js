@@ -9,10 +9,20 @@ exports.getComments = async (req,res) => {
     }
     res.json(comments)
 } 
-exports.getComment = async (req,res) => {
+exports.getProduct = async (req,res) => {
     let comment
     try {
-        comment = await commentsController.findOne(req.params.idProduct)
+        comment = await commentsController.findOneProduct(req.params.idProduct)
+    } catch (err) {
+        comment = err
+    }
+    res.json(comment)
+}
+
+exports.getUser = async (req,res) => {
+    let comment
+    try {
+        comment = await commentsController.findOneUser(req.auth)
     } catch (err) {
         comment = err
     }

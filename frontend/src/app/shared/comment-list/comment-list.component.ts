@@ -11,8 +11,8 @@ export class CommentListComponent implements OnInit {
 
   newComment: boolean = false
   comment: string = ""
-  @Input() comments!: Comment[]
-  @Input() product!: Product
+  @Input() comments!: any[]
+  @Input() product?: Product
   @Input() index!: string
   currentUser!: User
   comment_error: string = ""
@@ -26,11 +26,12 @@ export class CommentListComponent implements OnInit {
 
   ngOnInit(): void {    
     this._userService.currentUser.subscribe(data => this.currentUser = data)
+    
   }
 
   saveComment() {        
     if (this.comment.length > 0 && this.comment.length < 300) {
-      this._commentService.addProduct({slug_product:this.product.slug,body:this.comment}).subscribe()
+      this._commentService.addProduct({slug_product:this.product?.slug,body:this.comment}).subscribe()
       let newComment = {user:this.currentUser, body:this.comment, product:this.product}      
       this.comments.push(newComment)
       this.newComment=false

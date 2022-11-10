@@ -9,11 +9,18 @@ const { Comment, User, Product } = require("../../models/index");
     }
   };
 
-  exports.findOne = async (idProduct,auth) => {
+  exports.findOneProduct = async (idProduct) => {
     try {
-      console.log(idProduct);
       const data = await Comment.find({slug_product:idProduct}).populate("user").populate("product")
-      
+      return data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  exports.findOneUser = async (auth) => {
+    try {
+      const data = await Comment.find({uuid_user:auth.id}).populate("user").populate("product")
       return data;
     } catch (err) {
       return err;

@@ -15,10 +15,14 @@ export class CommentsService {
   ) { }
 
   getProduct(slug: any): Observable<Comment[]> {
-    return this._apiService.get('/comments/'+slug)
+    return this._apiService.get('/comments/product/'+slug)
   }
   
   addProduct(comment: any): Observable<any>{        
     return this._apiService.post('/comments/',comment)
+  }
+
+  getUser(): Observable<Comment[]>{
+    return this._apiService.get('/comments/user')
   }
 }
