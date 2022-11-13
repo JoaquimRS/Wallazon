@@ -1,0 +1,13 @@
+.likes-container:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.likes-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.liked {
+    color: red;
+}

@@ -1,0 +1,19 @@
+<main
+    infinite-scroll
+    [infiniteScrollDistance]="0"
+    [infiniteScrollDisabled]="scroll"
+    (scrolled)="onScroll()"
+>
+
+  <article>
+      <section class="categories">
+          <h1>¿Qué categoría estás buscando?</h1>
+          <carousel class="carousel" [categories]="categories"></carousel>
+        </section>
+        
+        <section>
+            <h1>Quizá te gusten</h1>
+            <product-list [products]="products"></product-list>
+        </section>
+    </article>
+</main>

@@ -1,0 +1,25 @@
+<div class="filters">
+<form [formGroup]="filtersForm">
+    <div class="filter">
+        <input type="checkbox" class="show-drop-down" id="categories">
+        <label for="categories">Category</label>
+        <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
+        <div class="drop-down-filter">
+            <select name="categoy" id="category" formControlName="category" (change)="applyFilters()" [(ngModel)]="inFilters.category">
+                <option value="">Todas las categorias</option>
+                <option *ngFor="let category of categories" [value]="category.slug">{{category.title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="filter">
+        <input type="checkbox" class="show-drop-down" id="show-drop-down-condition">
+        <label for="show-drop-down-condition">Condición</label>
+        <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
+        <div class="drop-down-filter">
+            <div class="filter-input" *ngFor="let condition of conditions" >
+                <label for="{{condition}}"><input type="checkbox" id="{{condition}}" [value]="condition" (change)="onCheckboxChange($event)">{{condition}}</label><br>
+            </div>
+        </div>
+    </div>
+</form>
+</div>

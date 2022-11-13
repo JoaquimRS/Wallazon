@@ -1,0 +1,54 @@
+<section>
+    
+    <header>
+        <h1>Perfil {{userProfile.username}}</h1>
+    </header>
+    <main>
+        <div class="user-info">
+            <div class="user-image">
+                <div>
+                    <img src="http://ximo.com:8080/users/img/{{avatar}}">
+                    <label for="avatar"><fa-icon [icon]="['fas','edit']" *ngIf="sameUser"></fa-icon></label>
+                    <input type="file" id="avatar" (change)="selectFile($event)" accept="image/*"/>
+                </div>
+            </div>
+            <div class="user-text" *ngIf="sameUser">
+                <p class="name">{{userProfile.username}}</p>
+                <input type="text" [(ngModel)]="email" class="input" placeholder="Email">
+                <textarea class="input" [(ngModel)]="bio" placeholder="Descripcion"></textarea>
+            </div>
+            <div class="user-text" *ngIf="!sameUser">
+                <p class="name">{{userProfile.username}}</p>
+                <p>{{userProfile.bio}}</p>
+            </div>
+            <div class="follow">
+                <follow-button [userProfile]="userProfile" *ngIf="!sameUser"></follow-button>
+            </div>
+            <div class="update-user" *ngIf="sameUser" (click)="updateProfile()">
+                <div class="update">
+                    <fa-icon [icon]="['fas','gear']"></fa-icon>
+                    <label>Aplicar Cambios</label>
+                </div>
+            </div>
+        </div>
+        <div class="user-status">
+            <div *ngIf="sameUser">
+                <h3>Favoritos</h3>
+                <h1>{{userProfile.likes.length || 0}}</h1>
+            </div>
+            <div>
+                <h3>Productos</h3>
+                <h1>{{userProfile.products.length || 0}}</h1>
+            </div>
+            <div>
+                <h3>Seguidores</h3>
+                <h1>{{userProfile.followers || 0}}</h1>
+            </div>
+            <div>
+                <h3>Siguiendo</h3>
+                <h1>{{userProfile.following.length || 0}}</h1>
+            </div>
+        </div>
+    </main>
+    
+</section>

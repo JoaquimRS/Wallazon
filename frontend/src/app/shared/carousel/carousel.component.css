@@ -1,0 +1,49 @@
+@import "keen-slider/keen-slider.min.css";
+
+.carrousel {
+    display: flex;
+    text-align: center;   
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    color: #443C6B;
+    border: 6px solid #443C6B;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    width: 120px;
+    height: 120px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+
+}
+
+
+.container:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.container fa-icon {
+    font-size: 60px;
+    margin: 0;
+}
+.container p {
+    margin: 0;
+}
+
+@media(max-width: 600px) {
+    .container {
+        width: 160px;
+        height: 160px;
+    }
+}

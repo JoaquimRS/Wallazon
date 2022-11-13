@@ -1,0 +1,36 @@
+<main>
+    <div class="container">
+        <header>
+            <h1>Registrarse</h1>
+        </header>
+        <div class="form">
+
+            <form [formGroup]="registerForm">
+                <span>{{user_error}}</span>
+                <div class="input-group">
+                    <input required="" type="text" name="text" formControlName="user" (keyup.enter)="email.focus()" autocomplete="off" class="input">
+                    <label class="user-label">Usuario</label>
+                </div>
+                <span>{{email_error}}</span>
+                <div class="input-group">
+                    <input required="" type="text" name="text" formControlName="email" #email (keyup.enter)="password.focus()" autocomplete="off" class="input">
+                    <label class="user-label">Email</label>
+                </div>
+                <span>{{password_error}}</span>
+                <div class="input-group">
+                    <input required="" type="password" name="text" formControlName="password" #password (keyup.enter)="repassword.focus()"  autocomplete="off" class="input">
+                    <label class="user-label">Contraseña</label>
+                </div>
+                <span>{{repassword_error}}</span>
+                <div class="input-group">
+                    <input required="" type="password" name="text" formControlName="repassword" #repassword (keyup.enter)="register()" autocomplete="off" class="input">
+                    <label class="user-label">Repetir Contraseña</label>
+                </div>
+            </form>
+            <button (click)="register()">Registrarse</button>
+        </div>
+        <div class="footer">
+            <a [routerLink]="['/auth/login']">Iniciar Sesión</a>
+        </div>
+    </div>
+</main>

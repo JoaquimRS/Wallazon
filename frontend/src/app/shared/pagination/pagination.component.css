@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+}    
+ul {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    list-style-type: none;
+}
+
+li {
+    box-sizing: border-box;
+    margin: 10px;
+    color: #443C6B;
+    border: 3px solid #443C6B;
+    border-radius: 20px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    font-size: 1.3em;
+    font-weight: 700;
+    cursor: pointer;
+}
+li:hover {
+    transform: scale(1.5);
+}   

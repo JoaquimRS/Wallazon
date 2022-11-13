@@ -1,0 +1,16 @@
+<div class="orders">
+    <div class="order">
+        <input type="checkbox" class="show-drop-down" id="order">
+        <label for="order">Ordenar por</label>
+        <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
+        <div class="drop-down-order">
+            <div class="order-element" *ngFor="let order of orders ">
+                <label for="{{order[1]}}" class="label">
+                    <input type="checkbox" class="show-order-drop-down" [value]="order[1]" (change)="onCheckboxChange($event)" id="{{order[1]}}">
+                    <fa-icon [icon]="['fas','arrow-down']"></fa-icon>
+                    {{order[0]}}
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

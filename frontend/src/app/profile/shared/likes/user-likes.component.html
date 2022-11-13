@@ -1,0 +1,17 @@
+<section>
+    
+    <header>
+        <h1>Favoritos {{userProfile.username}}</h1>
+    </header>
+    <main>
+        <div *ngIf="userProfile.likes.length > 0">
+            <product-list [products]="userProfile.likes"></product-list>
+        </div>
+
+        <div *ngIf="userProfile.likes.length == 0">
+            <h1>Todavia no tiene Favoritos</h1>
+        </div>
+
+    </main>
+</section>
+

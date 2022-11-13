@@ -1,0 +1,20 @@
+<header class="nav">
+    <div class="container flex-container">
+        <div class="nav-title" [routerLink]="['/']">
+            <img src="/assets/img/wallazon.png" class="logo" alt="Wallazon Image">
+            <h1 class="title">wallazon</h1>
+        </div>
+        <div class="search">
+            <search></search>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-list-item"><fa-icon [icon]="['far', 'heart']"></fa-icon></li>
+                <li class="nav-list-item"><fa-icon [icon]="['fas','comment-dots']"></fa-icon></li>
+                <li class="nav-list-item"><fa-icon [icon]="['fas','circle-plus']"></fa-icon></li>
+                <li class="nav-list-item" *ngIf="user == false" [routerLink]="['/auth']"><fa-icon [icon]="['fas','user']"></fa-icon></li>
+                <li class="nav-list-item" *ngIf="user == true" (click)="toProfile()"><img class="user-image" src="http://ximo.com:8080/users/img/{{currentUser.avatar}}"></li>
+            </ul>
+        </nav>
+    </div>
+</header>

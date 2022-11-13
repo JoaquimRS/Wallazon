@@ -1,0 +1,13 @@
+<div class="product-item">
+    <div class="images" [routerLink]="['/details/'+product.slug]">
+        <img src="/assets/img/products_images/{{product.images[0]}}" alt="">
+    </div>
+    <div class="content">
+        <div class="header">
+            <label class="price">{{product.price}}€</label>
+            <like-button [product]="product"></like-button>
+        </div>
+        <p class="title">{{product.title}}</p>
+        <p>{{product.description}}</p>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<main>
+    <div class="container">
+        <header>
+            <h1>Iniciar Sesión</h1>
+        </header>
+        <div class="form">
+
+            <form [formGroup]="loginForm">
+                <span>{{user_error}}</span>
+                <div class="input-group">
+                    <input required="" type="text" name="text" formControlName="user" (keyup.enter)="password.focus()"  autocomplete="off" class="input">
+                    <label class="user-label">Usuario</label>
+                </div>
+                <span>{{password_error}}</span>
+                <div class="input-group">
+                    <input required="" type="password" name="text" formControlName="password" #password (keyup.enter)="login()" autocomplete="off" class="input">
+                    <label class="user-label">Contraseña</label>
+                </div>
+            </form>
+            <button (click)="login()">Iniciar Sesión</button>
+        </div>
+        <div class="footer">
+            <a (click)="deleteUser()">Recuperar contraseña</a>
+            <a [routerLink]="['/auth/register']">Registrarse</a>
+        </div>
+    </div>
+</main>

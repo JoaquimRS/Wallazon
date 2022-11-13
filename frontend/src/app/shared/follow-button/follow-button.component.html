@@ -1,0 +1,9 @@
+<div class="follow" *ngIf="!userProfile.userFollow" (click)="changeFollow(true)">
+    <fa-icon [icon]="['fas','user-plus']"></fa-icon>
+    <label>Seguir</label>
+</div>
+<div class="unfollow" *ngIf="userProfile.userFollow" (click)="changeFollow(false)">
+    <fa-icon [icon]="['fas','user-minus']"></fa-icon>
+    <label class="following-text">Siguiendo</label>
+    <label class="unfollow-text">Dejar de seguir</label>
+</div>

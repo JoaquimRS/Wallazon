@@ -1,0 +1,45 @@
+<div class="comments" *ngIf="index == 'details'">
+
+    <div class="comment" *ngFor="let comment of comments">
+        <div class="user-info" [routerLink]="['/profile/'+comment.user.username]">
+            <img src="http://ximo.com:8080/users/img/{{comment.user.avatar}}">
+            <h2>{{comment.user.username}}</h2>
+        </div>
+        <div class="body">
+            <p>{{comment.body}}</p>
+        </div>
+    </div>
+
+    <div class="new-comment" (click)="addComment()" *ngIf="!newComment">
+        <div>
+            <fa-icon [icon]="['fas','circle-plus']"></fa-icon>
+        </div>
+    </div>
+    <div class="comment" *ngIf="newComment">
+        <div class="user-info">
+            <img src="http://ximo.com:8080/users/img/{{currentUser.avatar}}">
+            <h2>{{currentUser.username}}</h2>
+            <div class="save-comment" (click)="saveComment()"><fa-icon [icon]="['fas','paper-plane']"></fa-icon></div>
+        </div>
+        <div class="body">
+            <textarea [(ngModel)]="comment" class="input" placeholder="Comentario"></textarea>
+            <span>{{comment_error}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="comments" *ngIf="index == 'user'">
+    <div class="user-comment" *ngFor="let comment of comments">
+        <div class="product-info" [routerLink]="['/details/'+comment.product.slug]">
+            <img src="/assets/img/products_images/{{comment.product.images[0]}}">
+        </div>
+        <div class="product-body">
+            <div>
+                <h3>{{comment.product.title}} </h3>
+                <h3>{{comment.product.price}}€</h3>
+                
+            </div>
+            <b>Comentario:</b><p>{{comment.body}}</p>
+        </div>
+    </div>
+</div>

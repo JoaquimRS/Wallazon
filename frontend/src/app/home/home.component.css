@@ -1,0 +1,40 @@
+main {
+    margin: 20px auto;
+    width: 80%;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+h1 {
+    font-size: 1.5em;
+}
+section {
+    width: 100%;
+    text-align: center;
+}
+.carousel {
+    width: 100%;
+}
+
+/* .products {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.products h1 {
+    margin-bottom: 40px;
+}
+ */
+
+
+@media (max-width: 650px) {
+    main {
+        width: 95%;
+    }
+}
