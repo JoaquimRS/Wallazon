@@ -48,6 +48,7 @@ main {
     border: 3px solid #443C6B;
     color: #443C6B;
     display: flex;
+    box-sizing: border-box;
     align-items: center;
     border-radius: 30px;
     gap: 10px;
@@ -155,4 +156,30 @@ main {
 
 #avatar {
     display: none;
+}
+
+@media (max-width: 600px) {
+    aside {
+        width: 100%;
+    }
+    .menu-arrow {
+        visibility:hidden;
+    }
+    .user-info {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 10px;
+        border: none;
+    }
+    .user-info div {
+        width: 100%;
+    }
+
+    .update-user {
+        position: unset;
+    }
+
+    .user-status {
+        flex-direction: column;
+    }
 }

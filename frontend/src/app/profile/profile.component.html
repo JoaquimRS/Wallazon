@@ -1,8 +1,6 @@
 <main>
     <input type="checkbox" id="show_menu" class="show-menu">
-    <article>
-        <router-outlet></router-outlet>
-    </article>
+    
     <aside>
         <label for="show_menu" class="menu-arrow">
             <fa-icon [icon]="['fas','arrow-right']" class="arrow-right"></fa-icon>
@@ -26,4 +24,7 @@
         </nav>
         
     </aside>
+    <article>
+        <router-outlet></router-outlet>
+    </article>
 </main>

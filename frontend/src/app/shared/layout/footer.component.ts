@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User, UserService } from 'src/app/core';
 
 @Component({
@@ -11,7 +12,8 @@ export class FooterComponent implements OnInit {
   currentUser!: User
 
   constructor(
-    private _userService : UserService
+    private _userService : UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,16 @@ export class FooterComponent implements OnInit {
       (currentUser) => {
         this.currentUser = currentUser
     })
+  }
+  toProfile() {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}`])})
+  }
+  toLikes() {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}/likes`])})
+  }
+
+  toComments() {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}/comments`])})
   }
 
 }

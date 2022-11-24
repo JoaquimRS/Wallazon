@@ -32,5 +32,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}`])})
   }
 
+  toLikes() {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}/likes`])})
+  }
+
+  toComments() {
+    this.router.navigateByUrl('/profile',{skipLocationChange: true}).then(()=>{this.router.navigate([`/profile/${this.currentUser.username}/comments`])})
+  }
+
 
 }

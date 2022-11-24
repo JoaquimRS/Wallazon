@@ -2,7 +2,7 @@
 
     <div class="comment" *ngFor="let comment of comments">
         <div class="user-info" [routerLink]="['/profile/'+comment.user.username]">
-            <img src="http://ximo.com:8080/users/img/{{comment.user.avatar}}">
+            <img src="http://localhost:8080/users/img/{{comment.user.avatar}}">
             <h2>{{comment.user.username}}</h2>
         </div>
         <div class="body">
@@ -17,7 +17,7 @@
     </div>
     <div class="comment" *ngIf="newComment">
         <div class="user-info">
-            <img src="http://ximo.com:8080/users/img/{{currentUser.avatar}}">
+            <img src="http://localhost:8080/users/img/{{currentUser.avatar}}">
             <h2>{{currentUser.username}}</h2>
             <div class="save-comment" (click)="saveComment()"><fa-icon [icon]="['fas','paper-plane']"></fa-icon></div>
         </div>

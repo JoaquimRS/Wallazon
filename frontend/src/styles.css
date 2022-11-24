@@ -21,7 +21,6 @@ body {
 header.nav {
     background-color: #EF7757;
     padding: 1em 0;
-    height: 50px;
     text-align: center;
     margin-bottom: 0;
 }
@@ -111,6 +110,7 @@ footer a {
         top: 0;
         padding: 0;
         position: fixed;
+        background-color: #EF7757;
         width: 100%;
         z-index: 1;
     }

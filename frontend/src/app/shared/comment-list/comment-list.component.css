@@ -123,3 +123,9 @@ span {
     }
 
 }
+@media (max-width: 600px) {    
+    .user-comment {
+        width: 100%;
+    }
+}
+

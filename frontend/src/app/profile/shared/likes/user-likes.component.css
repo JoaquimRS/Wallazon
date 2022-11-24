@@ -19,3 +19,15 @@ main {
     text-align: center;
     overflow: auto;
 }
+
+@media (max-width: 600px) {    
+    main{
+        padding: 0;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    main > div {
+        width: 100%;
+    }
+}
+

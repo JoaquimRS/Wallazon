@@ -1,11 +1,12 @@
 main {
     margin: 0px auto;
     width:100%;
-    height: calc(100vh - 152px);
+    min-height: calc(100vh - 142px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* overflow: hidden; */
 }
 h1,h2,h3,h4,p {
     margin: 0;
@@ -34,8 +35,14 @@ h1,h2,h3,h4,p {
 .images {
     box-sizing: border-box;
     width: 40%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
+}
+
+.main-image {
+    width: 100%;
+    max-height: 100%;
+    padding: 5px;
 }
 
 .main-image img {
@@ -44,10 +51,6 @@ h1,h2,h3,h4,p {
     height: 100%;
     object-fit: cover;
     object-position: center;
-}
-.main-image {
-    width: 100%;
-    padding: 5px;
 }
 .second-images {
     display: none;
@@ -69,7 +72,8 @@ h1,h2,h3,h4,p {
 
 .product-info {
     width: 70%;
-    height: 100%;
+    max-height: 100%;
+    height: auto;
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
@@ -89,13 +93,17 @@ h1,h2,h3,h4,p {
     height: 100%;
 }
 .product-info .user {
-    max-width: 25%;
+    width: fit-content;
     cursor: pointer;
     background-color: #C6E4F2;
     border-radius: 15px;
     display: flex;
+    box-sizing: border-box;
     align-items: center;
     padding: 5px;
+}
+.user img {
+    max-height: 40px;
 }
 
 
@@ -114,6 +122,7 @@ h1,h2,h3,h4,p {
     gap: 10px;
     box-sizing: border-box;
     position: relative;
+    margin-bottom: 10px;
 }
 
 .price {
@@ -128,17 +137,19 @@ h1,h2,h3,h4,p {
     width: 100%;
 }
 
-.product .footer {
+.footer {
     display: flex;
-    height:50%;
+    max-height:50%;
     flex-direction: column;
+    box-sizing: border-box;
+
     gap: 10px;
 }
 
 iframe{
     box-sizing: border-box;
     width: 100%;
-    height: 90%;
+    height: 80%;
     border: 0px;
     border-radius: 15px;
 }
@@ -157,6 +168,7 @@ iframe{
     position: absolute;
     top: 100%;
     right: 0;
+    box-sizing: border-box;
 }
 
 .update-user *{
@@ -164,6 +176,7 @@ iframe{
 }
 
 .update-user .update {
+    box-sizing: border-box;
     font-size: 1.2rem;
     font-weight: 700;
     padding: 10px;
@@ -204,4 +217,42 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+@media (max-width: 600px)  {
+    .container {
+        flex-direction: column;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .container div {
+        width: 100%;
+    }
+    .product {
+        flex-direction: column;
+    }
+    .product div {
+        width: 100%;
+    }
+
+    .comments {
+        overflow: visible;
+    }
+    .header {
+        flex-direction: column;
+        width: 100%;
+    }
+    .update-user {
+        position: unset;
+        width: 100%;   
+    }
+    .input {
+        padding: 0;
+    }
+
+    .condition select {
+        color: black;
+    }
+
 }

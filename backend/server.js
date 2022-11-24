@@ -30,5 +30,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port,hostname, () => { 
-  console.log(`http://ximo.com:${port}`);
+  console.log(`http://localhost:${port}`);
 });
