@@ -6,7 +6,7 @@
     <main>
         <div *ngIf="userProfile.following" class="following">
             <div class="container" *ngFor="let user of userProfile.following" (click)="toProfile(user.username)">
-                <img src="http://localhost:8080/users/img/{{user.avatar}}">
+                <img src="http://localhost/api/users/img/{{user.avatar}}">
                 <div class="user-info">
                     <h1>{{user.username}}</h1>
                 </div>

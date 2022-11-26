@@ -1,4 +1,4 @@
 module.exports = {
-    url: "mongodb://localhost:27017/wallazon"
+    url: "mongodb://mongodb:27017/wallazon"
   };
   

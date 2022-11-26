@@ -19,7 +19,7 @@
             <li class="nav-list-item"><fa-icon [icon]="['fas','circle-plus']"></fa-icon></li>
             <li class="nav-list-item" (click)="toComments()"><fa-icon [icon]="['fas','comment-dots']"></fa-icon></li>
             <li class="nav-list-item" *ngIf="user == false" [routerLink]="['/auth']"><fa-icon [icon]="['fas','user']"></fa-icon></li>
-            <li class="nav-list-item" *ngIf="user == true" (click)="toProfile()"><img class="user-image" src="http://localhost:8080/users/img/{{currentUser.avatar}}"></li>
+            <li class="nav-list-item" *ngIf="user == true" (click)="toProfile()"><img class="user-image" src="http://localhost/api/users/img/{{currentUser.avatar}}"></li>
         </ul>
     </nav>
 </footer>
